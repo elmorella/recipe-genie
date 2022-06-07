@@ -1,4 +1,4 @@
-package com.example.project2registration
+package com.example.projectp0
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
