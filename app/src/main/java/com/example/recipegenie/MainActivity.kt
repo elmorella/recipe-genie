@@ -20,7 +20,6 @@ import com.example.recipegenie.viewmodel.MainViewModel
 import com.example.recipegenie.viewmodel.RecipeAdapter
 import com.example.recipegenie.viewmodel.RecipeListGenerator
 
-
 class MainActivity : AppCompatActivity() {
 
     var recipeList = ArrayList<Recipe>()
@@ -66,15 +65,16 @@ class MainActivity : AppCompatActivity() {
 //        favoritesTextView.text = recipeList[0].title
 //
 
-//      From Room db : LiveData<List<Recipe>>
+
         viewModel.recipeList?.observe(this) { recipeList ->
             getRecipe(recipeList)
+
+
             var myRecipeTitle = recipeList[0].title
             categoryTextView.text = myRecipeTitle
-//            Log.d("MainActivity", "DB recipeList detected")
+            Log.d("MainActivity", "DB recipeList detected")
         }
 //
-//        from API : MutableLiveData<RecipeResult>
         viewModel.getSearchResults(0, 1, "", "chicken")
 
         viewModel.searchResults.observe(this) {
