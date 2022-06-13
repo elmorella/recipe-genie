@@ -55,6 +55,7 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_favorites_list.xml" value="0.29764220325659346" />
         <entry key="app/src/main/res/layout/activity_landing_page.xml" value="0.2572463768115942" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.20018115942028986" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19405426025390626" />
         <entry key="app/src/main/res/layout/activity_new_recipe_form.xml" value="0.13903985507246377" />
         <entry key="app/src/main/res/layout/activity_recipe_page.xml" value="0.21707827803017438" />

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.registration.LoginActivity">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/username1"
+        style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="186dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        app:helperText=" *Required"
+        app:helperTextTextColor="@color/purple_200"
+        app:layout_constraintBottom_toTopOf="@+id/password1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:placeholderText="User Name"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Your Email Id" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password1"
+        style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="397dp"
+        app:endIconMode="password_toggle"
+        app:helperText=" *Required"
+        app:helperTextTextColor="@color/purple_200"
+        app:layout_constraintBottom_toTopOf="@+id/button21"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username1"
+        app:placeholderText="Pasword"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+
+            tools:ignore="MissingConstraints" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/button21"
+        style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="397dp"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="@id/password1"
+        app:layout_constraintTop_toBottomOf="@+id/password1"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="85dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cancel_btn"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="100dp"
+                android:background="@drawable/sign_in_btn"
+                android:text="Cancel"
+                android:textSize="20sp"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/sign_in_btn"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="100dp"
+                android:background="@drawable/sign_in_btn"
+                android:text="Sign In"
+                android:textSize="20sp"
+                app:backgroundTint="@null" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="75dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Forgot Password?"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                />
+            <TextView
+                android:id="@+id/reset_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reset Password"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:onClick="onClick"
+                android:clickable="true"
+                tools:ignore="OnClick" />
+        </LinearLayout>
+        <!-- <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal">
+     <Button
+         android:id="@+id/login"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Login"
+         android:layout_marginLeft="16dp"
+         tools:ignore="MissingConstraints"
+         tools:layout_editor_absoluteX="206dp"
+         tools:layout_editor_absoluteY="407dp" />
+ -->
+        <!-- <Button
+             android:id="@+id/guest"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Guest"
+             android:layout_marginLeft="16dp"
+             tools:ignore="MissingConstraints"
+             tools:layout_editor_absoluteX="63dp"
+             tools:layout_editor_absoluteY="407dp" />-->
+    </com.google.android.material.textfield.TextInputLayout>>
+    <!--     <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="16dp"
+             android:orientation="horizontal">
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="New Here!"
+         android:textSize="30sp"
+         tools:ignore="MissingConstraints"
+         tools:layout_editor_absoluteX="30dp"
+         tools:layout_editor_absoluteY="520dp"></TextView>
+     <Button
+         android:id="@+id/sign_up"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Sign Up"
+         tools:ignore="MissingConstraints"
+         tools:layout_editor_absoluteX="178dp"
+         tools:layout_editor_absoluteY="513dp" />
+         </LinearLayout>
+ -->
+</androidx.constraintlayout.widget.ConstraintLayout>

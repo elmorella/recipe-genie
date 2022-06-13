@@ -12,13 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.recipeGenie">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.SearchRecipes"
             android:exported="false" />
         <activity
-            android:name=".view.Landing_page"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".UpdateRecipe"
+            android:name=".view.UpdateRecipe"
             android:exported="false" />
         <activity
             android:name=".view.RecipePage"
@@ -30,7 +33,7 @@
             android:name=".view.FavoritesList"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".view.LandingPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +41,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="keyValue"
+            android:value="${KEY}" />
     </application>
 
 </manifest>
