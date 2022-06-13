@@ -19,7 +19,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
-    //lateinit var auth : FirebaseAuth
+    lateinit var auth : FirebaseAuth
     lateinit var sign_in_btn : Button
     lateinit var cancel_btn : Button
     lateinit var reset_pwd : TextView
@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
         username = findViewById(R.id.username)
         password = findViewById(R.id.password)
 
-      //  auth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
 
         val currentuser = auth.currentUser
         if (currentuser != null){

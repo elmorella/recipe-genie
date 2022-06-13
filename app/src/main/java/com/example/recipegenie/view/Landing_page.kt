@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.recipegenie.MainActivity
 import com.example.recipegenie.R
+import com.example.recipegenie.view.registration.LoginActivity
 
 class LandingPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +15,7 @@ class LandingPage : AppCompatActivity() {
 
         var bntSignIn : Button = findViewById(R.id.btn_sign_in)
         bntSignIn.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }
