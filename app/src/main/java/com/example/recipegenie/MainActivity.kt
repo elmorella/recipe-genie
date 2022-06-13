@@ -1,6 +1,8 @@
 package com.example.recipegenie
 
 import android.content.Intent
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,6 +33,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val ai: ApplicationInfo = applicationContext.packageManager
+            .getApplicationInfo(applicationContext.packageName, PackageManager.GET_META_DATA)
+        val value = ai.metaData["keyValue"]
+        val key = value.toString()
+        val host = "X-RapidAPI-Host: tasty.p.rapidapi.com"
+
+        println("My key: $key")
 //Test Room DB
         var categoryTextView: TextView = findViewById(R.id.text_view_categories)
         var favoritesTextView: TextView = findViewById(R.id.text_view_favorites)
@@ -63,24 +73,29 @@ class MainActivity : AppCompatActivity() {
 //        var recipeList = recipeGenerator.makeList(this, viewModel.recipeList)
 //
 //        favoritesTextView.text = recipeList[0].title
-//
-
-
+        // From Room db
         viewModel.recipeList?.observe(this) { recipeList ->
             getRecipe(recipeList)
-
-
             var myRecipeTitle = recipeList[0].title
             categoryTextView.text = myRecipeTitle
             Log.d("MainActivity", "DB recipeList detected")
         }
-//
         viewModel.getSearchResults(0, 1, "", "chicken")
 
+
+        // From API
+        var apiRecipeList = ArrayList<Recipe>()
         viewModel.searchResults.observe(this) {
-            var str: String = it.results[0].name
+
+            var recipeGenerator = RecipeListGenerator()
+            apiRecipeList = recipeGenerator.makeList(it)
+
+            var str: String = apiRecipeList[0].title
+
             favoritesTextView.text = str
         }
+
+
 
 
 ////    val apiClient = RetrofitClient.create()
