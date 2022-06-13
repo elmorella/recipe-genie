@@ -69,27 +69,25 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.insertRecipes(recipe)
 
-//        var recipeGenerator = RecipeListGenerator()
-//        var recipeList = recipeGenerator.makeList(this, viewModel.recipeList)
-//
 //        favoritesTextView.text = recipeList[0].title
-        // From Room db
+        // From Room db - as LiveData<RecipesList>>
         viewModel.recipeList?.observe(this) { recipeList ->
             getRecipe(recipeList)
             var myRecipeTitle = recipeList[0].title
             categoryTextView.text = myRecipeTitle
             Log.d("MainActivity", "DB recipeList detected")
         }
-        viewModel.getSearchResults(0, 1, "", "chicken")
+        viewModel.getSearchResults(0, 5, "under_30_minutes", "chicken")
 
 
-        // From API
+        // From API - MutableLiveData<RecipeResult>
         var apiRecipeList = ArrayList<Recipe>()
         viewModel.searchResults.observe(this) {
 
             var recipeGenerator = RecipeListGenerator()
             apiRecipeList = recipeGenerator.makeList(it)
 
+            // apiRecipeList holds a ArrayList<Recipe>
             var str: String = apiRecipeList[0].title
 
             favoritesTextView.text = str
