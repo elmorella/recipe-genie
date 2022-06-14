@@ -1,12 +1,10 @@
 package com.example.recipegenie.view
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import com.example.recipegenie.MainActivity
@@ -16,7 +14,7 @@ import com.example.recipegenie.model.Recipe
 import com.example.recipegenie.viewmodel.MainViewModel
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
-class RecipePage : AppCompatActivity() {
+class RecipeDetails : AppCompatActivity() {
 
     lateinit var mainViewModel: MainViewModel
 
@@ -36,12 +34,12 @@ class RecipePage : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        val btnEdit: ExtendedFloatingActionButton = findViewById(R.id.btn_edit)
-//        btnEdit.setOnClickListener {
-//            val intent: Intent = Intent(this, UpdateRecipe::class.java)
-//            intent.putExtra("title", recipe.title)
-//            startActivity(intent)
-//        }
+        val btnEdit: ExtendedFloatingActionButton = findViewById(R.id.btn_edit)
+        btnEdit.setOnClickListener {
+            val intent: Intent = Intent(this, UpdateRecipe::class.java)
+            intent.putExtra("title", recipe.title)
+            startActivity(intent)
+        }
 
         val btnDelete: ExtendedFloatingActionButton = findViewById(R.id.btn_delete)
         btnDelete.setOnClickListener {
@@ -54,7 +52,7 @@ class RecipePage : AppCompatActivity() {
             val toast = Toast.makeText(applicationContext, message, duration)
             toast.show()
 
-            val intent = Intent(this, FavoritesList::class.java)
+            val intent = Intent(this, RecipeListActivity::class.java)
             startActivity(intent)
         }
     }

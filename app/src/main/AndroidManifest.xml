@@ -24,13 +24,13 @@
             android:name=".view.UpdateRecipe"
             android:exported="false" />
         <activity
-            android:name=".view.RecipePage"
+            android:name=".view.RecipeDetails"
             android:exported="false" />
         <activity
             android:name=".view.NewRecipeForm"
             android:exported="false" />
         <activity
-            android:name=".view.FavoritesList"
+            android:name=".view.RecipeListActivity"
             android:exported="false" />
         <activity
             android:name=".view.LandingPage"

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipegenie.MainActivity
@@ -11,6 +12,7 @@ import com.example.recipegenie.R
 import com.example.recipegenie.model.Recipe
 import com.example.recipegenie.viewmodel.MainViewModel
 import com.example.recipegenie.viewmodel.RecipeAdapter
+import com.example.recipegenie.viewmodel.RecipeListGenerator
 
 class SearchRecipes : AppCompatActivity() {
 
@@ -26,14 +28,28 @@ class SearchRecipes : AppCompatActivity() {
         var navBntHome : View = findViewById(R.id.nav_btn_home)
         var navBtnAdd : View = findViewById(R.id.nav_btn_add)
 
-        mainViewModel = MainViewModel((application))
-        mainViewModel.recipeList?.observe(this) { recipeList ->
-            getRecipes(recipeList)
+
+        var searchView : SearchView = findViewById(R.id.search_view)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                searchView.clearFocus()
+
+                mainViewModel.getSearchResults(0,30,"", query!!)
+
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                TODO("Not yet implemented")
+            }
+        })
+
+        var listGenerator = RecipeListGenerator()
+
+        mainViewModel.searchResults.observe(this){
+            recipeList = listGenerator.makeList(it)
         }
-
-        var recyclerView: RecyclerView = findViewById(R.id.recycler_view)
-
-        recyclerView.layoutManager = LinearLayoutManager(this)
 
         // create an adapter
        // recipeAdapter = RecipeAdapter({ position -> onCardClick(position) }, recipeList)
@@ -43,7 +59,7 @@ class SearchRecipes : AppCompatActivity() {
         //recyclerView.adapter = recipeAdapter
 
         navBtnFavorites.setOnClickListener {
-            val myIntent = Intent(this, FavoritesList::class.java)
+            val myIntent = Intent(this, RecipeListActivity::class.java)
             startActivity(myIntent)
         }
         navBntHome.setOnClickListener {
@@ -58,7 +74,7 @@ class SearchRecipes : AppCompatActivity() {
     }
 
     private fun onCardClick(position: Int) {
-        val myIntent = Intent(this, RecipePage::class.java)
+        val myIntent = Intent(this, RecipeDetails::class.java)
         myIntent.putExtra("title", recipeList[position].title)
         startActivity(myIntent)
     }

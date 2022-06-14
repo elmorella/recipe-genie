@@ -7,7 +7,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipegenie.model.Recipe
-import com.example.recipegenie.view.FavoritesList
+import com.example.recipegenie.view.RecipeListActivity
 import com.example.recipegenie.view.SearchRecipes
 import com.example.recipegenie.viewmodel.MainViewModel
 
@@ -62,7 +62,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         navBtnFavorites.setOnClickListener {
-            val myIntent = Intent(this, FavoritesList::class.java)
+            val myIntent = Intent(this, RecipeListActivity::class.java)
+            myIntent.putExtra("listSource", "Favorites")
             startActivity(myIntent)
         }
     }

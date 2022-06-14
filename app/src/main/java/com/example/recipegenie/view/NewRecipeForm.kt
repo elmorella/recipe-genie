@@ -98,7 +98,7 @@ class NewRecipeForm : AppCompatActivity() {
 
                 vm.insertRecipes(recipe)
 
-                val intent = Intent(this, FavoritesList::class.java)
+                val intent = Intent(this, RecipeListActivity::class.java)
                 intent.putExtra("title", recipe.title.toString())
                 startActivity(intent)
 
@@ -111,7 +111,7 @@ class NewRecipeForm : AppCompatActivity() {
 
         // Cancel button
         btnCancel.setOnClickListener {
-            val intent = Intent(this, FavoritesList::class.java)
+            val intent = Intent(this, RecipeListActivity::class.java)
             startActivity(intent)
 
             val message = "cancelled"

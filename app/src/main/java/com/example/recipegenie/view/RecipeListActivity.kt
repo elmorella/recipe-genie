@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipegenie.MainActivity
@@ -12,7 +13,7 @@ import com.example.recipegenie.model.Recipe
 import com.example.recipegenie.viewmodel.MainViewModel
 import com.example.recipegenie.viewmodel.RecipeAdapter
 
-class FavoritesList : AppCompatActivity() {
+class RecipeListActivity : AppCompatActivity() {
 
     var recipeList = ArrayList<Recipe>()
     lateinit var mainViewModel: MainViewModel
@@ -20,7 +21,11 @@ class FavoritesList : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_favorites_list)
+        setContentView(R.layout.activity_recipe_list)
+
+        var activityTitle: TextView = findViewById(R.id.activity_title)
+
+        var titleStr: String = intent.getStringExtra("listSource")!!
 
         var recyclerView: RecyclerView = findViewById(R.id.recyclerView_favorites_card)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -54,7 +59,7 @@ class FavoritesList : AppCompatActivity() {
     }
 
     private fun onCardClick(position: Int) {
-        val myIntent = Intent(this, RecipePage::class.java)
+        val myIntent = Intent(this, RecipeDetails::class.java)
         myIntent.putExtra("id", recipeList[position].recipeId)
         myIntent.putExtra("isFavorite", recipeList[position].isFavorite)
         myIntent.putExtra("title", recipeList[position].title)

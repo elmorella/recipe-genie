@@ -60,7 +60,7 @@
                             android:layout_width="@dimen/drawable_star_size"
                             android:layout_height="@dimen/drawable_star_size"
                             android:layout_gravity="end"
-                            android:src="@mipmap/fav_heart" />
+                            android:src="@drawable/fav_heart_foreground" />
 
                     </LinearLayout>
                     <LinearLayout

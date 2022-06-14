@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_color"
     android:orientation="vertical"
-    tools:context="com.example.recipegenie.view.FavoritesList">
+    tools:context="com.example.recipegenie.view.RecipeListActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,6 +44,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/activity_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -52,11 +53,7 @@
         android:fontFamily="@font/roboto_bold"
         android:text="@string/favorites_subtitle"
         android:textColor="@color/white"
-        android:textSize="@dimen/search_title_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="@dimen/large_card_title_text" />
 
     <SearchView
         android:layout_width="match_parent"

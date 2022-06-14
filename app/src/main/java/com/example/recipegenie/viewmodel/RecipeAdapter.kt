@@ -10,15 +10,18 @@ import coil.load
 import com.example.recipegenie.R
 import com.example.recipegenie.model.Recipe
 
-class RecipeAdapter (private val recipeList: List<Recipe>,
-                     private val onCardClick: (position: Int) -> Unit)
-                    : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
+class RecipeAdapter(
+    private val recipeList: List<Recipe>,
+    private val onCardClick: (position: Int) -> Unit
+) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
 
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
+
         // inflate a view and return it
         var viewInflater = LayoutInflater.from(parent.context)
             .inflate(R.layout.recipe_list_item_layout, parent, false)
@@ -40,17 +43,18 @@ class RecipeAdapter (private val recipeList: List<Recipe>,
         return recipeList.size
     }
 
-    class ViewHolder (view: View, private val onCardClick: (position: Int) -> Unit)
-    : RecyclerView.ViewHolder(view), View.OnClickListener {
+    class ViewHolder(view: View, private val onCardClick: (position: Int) -> Unit) :
+        RecyclerView.ViewHolder(view), View.OnClickListener {
 
         init {
             itemView.setOnClickListener(this)
         }
+
         var titleTextView: TextView = view.findViewById(R.id.title)
         var yieldTextView: TextView = view.findViewById(R.id.yields)
         var prepTimeTextView: TextView = view.findViewById(R.id.prep_time)
         var totalTimeTextView: TextView = view.findViewById(R.id.total_time)
-        var imageUrl : ImageView = view.findViewById(R.id.food_thumbnail)
+        var imageUrl: ImageView = view.findViewById(R.id.food_thumbnail)
 
         override fun onClick(v: View?) {
             val position = absoluteAdapterPosition
