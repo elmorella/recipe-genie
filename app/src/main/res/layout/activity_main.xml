@@ -49,15 +49,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
-        <TextView
-            android:id="@+id/text_view_categories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Categories"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -119,7 +110,7 @@
             android:id="@+id/text_view_favorites"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Favorites"
+            android:text="Featured"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold"
