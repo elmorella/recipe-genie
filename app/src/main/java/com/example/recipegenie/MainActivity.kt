@@ -74,17 +74,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun populateFavoritesView(viewModel: MainViewModel) {
-
-//        this.recipeList.clear()
-
+        this.recipeList.clear()
         viewModel.getAllRecipes()
         var liveData = viewModel.recipeList
-        liveData?.observe(this){
+        liveData?.observe(this) {
             adapterFavorites.setItems(it)
         }
-
         adapterFavorites = MainActivityAdapter(recipeList)
-
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView_favorites)
         recyclerView.layoutManager = LinearLayoutManager(
             this, LinearLayoutManager.HORIZONTAL,
@@ -94,21 +90,17 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-    fun populateCategoriesView(viewModel: MainViewModel){
-//        this.recipeList.clear()
+    fun populateCategoriesView(viewModel: MainViewModel) {
+        this.recipeList.clear()
         viewModel.getSearchResults(0, 20, "dinner", "")
         var mutableLiveData = viewModel.searchResults
-
-        mutableLiveData.observe(this){
+        mutableLiveData.observe(this) {
             var recipeListGenerator = RecipeListGenerator()
             recipeList = recipeListGenerator.makeList(it)
             //getRecipes(apiRecipeList)
             adapterCategories.setItems(recipeList)
         }
-
         adapterCategories = MainActivityAdapter(recipeList)
-
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView_category)
         recyclerView.layoutManager = LinearLayoutManager(
             this, LinearLayoutManager.HORIZONTAL,

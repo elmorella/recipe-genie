@@ -25,7 +25,7 @@ class RecipeListActivity : AppCompatActivity() {
 
         var activityTitle: TextView = findViewById(R.id.activity_title)
 
-        var titleStr: String = intent.getStringExtra("listSource")!!
+//        var titleStr: String = intent.getStringExtra("listSource")!!
 
         var recyclerView: RecyclerView = findViewById(R.id.recyclerView_favorites_card)
         recyclerView.layoutManager = LinearLayoutManager(this)
