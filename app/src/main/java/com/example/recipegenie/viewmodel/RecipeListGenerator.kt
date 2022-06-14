@@ -8,12 +8,10 @@ import com.example.recipegenie.model.Results
 
 class RecipeListGenerator {
 
+    var recipeList = ArrayList<Recipe>()
     fun makeList(recipeResults: RecipeResults) : ArrayList<Recipe> {
-        var recipeList = ArrayList<Recipe>()
             // create a recipe from search results
             if(!recipeResults.results.isNullOrEmpty()) {
-                var recipe = Recipe(null, false,"","","",
-                    "", "", "", "","")
 
                 recipeResults.results = recipeResults.results.filter{it.sections != null} as ArrayList<Results>
 
@@ -42,6 +40,10 @@ class RecipeListGenerator {
                         .total_time_minutes} minutes"
                     var imageUrl: String = recipeResults.results[index].thumbnail_url
 
+
+                    var recipe = Recipe(null, false,"","","",
+                        "", "", "", "","")
+
                     recipe.recipeId = id
                     recipe.isFavorite = isFavorite
                     recipe.title =name
@@ -52,8 +54,9 @@ class RecipeListGenerator {
                     recipe.ingredients = ingredients
                     recipe.directions = directions
                     recipe.imageUrl = imageUrl
+
+                    recipeList.add(recipe)
                 }
-                recipeList.add(recipe)
             }
         return recipeList
     }
