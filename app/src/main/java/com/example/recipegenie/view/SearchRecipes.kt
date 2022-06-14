@@ -5,20 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.recipegenie.MainActivity
 import com.example.recipegenie.R
 import com.example.recipegenie.model.Recipe
 import com.example.recipegenie.viewmodel.MainViewModel
-import com.example.recipegenie.viewmodel.RecipeAdapter
+import com.example.recipegenie.viewmodel.RecipeListAdapter
 import com.example.recipegenie.viewmodel.RecipeListGenerator
 
 class SearchRecipes : AppCompatActivity() {
 
     var recipeList = ArrayList<Recipe>()
     lateinit var mainViewModel: MainViewModel
-    lateinit var recipeAdapter: RecipeAdapter
+    lateinit var recipeAdapter: RecipeListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

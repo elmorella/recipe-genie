@@ -49,7 +49,7 @@ data class Results(
     var total_time_minutes: Int,
     var approved_at: Long,
     var beauty_url: String?,
-    var brand: String?,
+    var brand: Brand?,
     var compilations: ArrayList<Objects?>,
     var thumbnail_alt_text: String?,
     var video_url: String?,
@@ -62,6 +62,13 @@ data class Results(
     var seo_title: String?,
     var prep_time_minutes: Int,
     var inspired_by_url: String?,
+)
+
+data class Brand (
+    var image_url : String,
+    var name : String,
+    var id : Int,
+    var slug : String
 )
 
 data class Renditions(

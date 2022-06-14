@@ -10,17 +10,16 @@ import coil.load
 import com.example.recipegenie.R
 import com.example.recipegenie.model.Recipe
 
-class RecipeAdapter(
+class RecipeListAdapter(
     private val recipeList: List<Recipe>,
     private val onCardClick: (position: Int) -> Unit
-) : RecyclerView.Adapter<RecipeAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<RecipeListAdapter.ViewHolder>() {
 
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
 
         // inflate a view and return it
         var viewInflater = LayoutInflater.from(parent.context)

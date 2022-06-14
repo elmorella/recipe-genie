@@ -9,14 +9,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recipegenie.model.Recipe
 import com.example.recipegenie.view.RecipeListActivity
 import com.example.recipegenie.view.SearchRecipes
+import com.example.recipegenie.viewmodel.MainActivityAdapter
 import com.example.recipegenie.viewmodel.MainViewModel
+import com.example.recipegenie.viewmodel.RecipeListGenerator
 
 class MainActivity : AppCompatActivity() {
+
+    var apiRecipeList = ArrayList<Recipe>()
+
+    lateinit var adapterCategories: MainActivityAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var recipeList = ArrayList<Recipe>()
 //        var recipe = Recipe(
 //            null,
 //            true,
@@ -39,14 +45,27 @@ class MainActivity : AppCompatActivity() {
 //                    "video-api/assets/351171.jpg"
 //        )
 
+
         var vm = MainViewModel(application)
-//        vm.insertRecipes(recipe)
+        vm.getSearchResults(0, 20, "", "chicken")
+        var mutableLiveData = vm.searchResults
+
+        mutableLiveData.observe(this){
+            var recipeListGenerator = RecipeListGenerator()
+            apiRecipeList = recipeListGenerator.makeList(it)
+                //getRecipes(apiRecipeList)
+            adapterCategories.setItems(apiRecipeList)
+        }
+
+        adapterCategories = MainActivityAdapter(apiRecipeList)
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView_category)
         recyclerView.layoutManager = LinearLayoutManager(
             this, LinearLayoutManager.HORIZONTAL,
             false
         )
+        recyclerView.adapter = adapterCategories
+
 
         var navBtnSearch: View = findViewById(R.id.nav_btn_search)
         var navBtnHome: View = findViewById(R.id.nav_btn_home)
@@ -66,6 +85,11 @@ class MainActivity : AppCompatActivity() {
             myIntent.putExtra("listSource", "Favorites")
             startActivity(myIntent)
         }
+    }
+    private fun getRecipes(recipeList: List<Recipe>) {
+//        this.apiRecipeList.clear()
+//        this.apiRecipeList.addAll(recipeList)
+//        adapterCategories.notifyDataSetChanged()
     }
 }
 
