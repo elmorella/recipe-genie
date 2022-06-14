@@ -56,16 +56,16 @@ class RecipeRepository(context: Context) {
     fun deleteAll() {
         db?.deleteAll()
     }
-
-    fun findRecipeWithId(search: String): List<Recipe> {
-
-        return db?.findRecipeWithId(search)!!
-    }
-
-    fun findRecipeWithTitle(search: String): List<Recipe> {
-
-        return db?.findRecipeWithTitle(search)!!
-    }
+//
+//    fun findRecipeWithId(search: String): List<Recipe> {
+//
+//        return db?.findRecipeWithId(search)!!
+//    }
+//
+//    fun findRecipeWithTitle(search: String): List<Recipe> {
+//
+//        return db?.findRecipeWithTitle(search)!!
+//    }
 
     // insert things in an Async way
 }

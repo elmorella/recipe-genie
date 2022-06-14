@@ -23,6 +23,7 @@
             android:id="@+id/food_thumbnail"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginEnd="10dp"
             android:layout_gravity="center"
             android:src="@drawable/fav_heart_foreground"/>
 
@@ -50,14 +51,27 @@
                     android:textStyle="bold" />
 
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
                 <TextView
-                    android:id="@+id/id"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="20dp"
-                    android:text="##"
-                    android:textAlignment="viewEnd"
+                    android:layout_height="wrap_content"
+                    android:text="Prep Time: "
                     android:textColor="@color/title_color"
+                    android:textSize="@dimen/recipe_item_subtitle_text" />
+                <TextView
+                    android:id="@+id/prep_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/recipe_item_subtitle_margin"
+                    android:layout_marginLeft="5dp"
+                    android:text="####"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/recipe_item_subtitle_text" />
             </LinearLayout>
 
@@ -84,27 +98,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/recipe_item_subtitle_text" />
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Prep Time: "
-                    android:textColor="@color/title_color"
-                    android:textSize="@dimen/recipe_item_subtitle_text" />
-                <TextView
-                    android:id="@+id/prep_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/recipe_item_subtitle_margin"
-                    android:layout_marginLeft="5dp"
-                    android:text="####"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/recipe_item_subtitle_text" />
-            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -118,7 +112,7 @@
                     android:textColor="@color/title_color"
                     android:textSize="16dp" />
                 <TextView
-                    android:id="@+id/r_yield"
+                    android:id="@+id/yields"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/recipe_item_subtitle_margin"

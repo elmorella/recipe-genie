@@ -21,7 +21,7 @@ class RecipeAdapter (private val recipeList: List<Recipe>)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // inflate a view and return it
         var viewInflater = LayoutInflater.from(parent.context)
-            .inflate(R.layout.category_card_layout, parent, false)
+            .inflate(R.layout.recipe_list_item_layout, parent, false)
 
 //        return ViewHolder(viewInflater, onCardClick)
         return ViewHolder(viewInflater)
@@ -30,7 +30,6 @@ class RecipeAdapter (private val recipeList: List<Recipe>)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // add current item to the holder
         val recipe = recipeList[position]
-        holder.idTextView.text = recipe.recipeId.toString()
         holder.titleTextView.text = recipe.title
         holder.yieldTextView.text = recipe.yields
         holder.prepTimeTextView.text = recipe.prepTime
@@ -48,12 +47,11 @@ class RecipeAdapter (private val recipeList: List<Recipe>)
         init {
             itemView.setOnClickListener(this)
         }
-        var idTextView: TextView = view.findViewById(R.id.id)
         var titleTextView: TextView = view.findViewById(R.id.title)
         var yieldTextView: TextView = view.findViewById(R.id.yields)
         var prepTimeTextView: TextView = view.findViewById(R.id.prep_time)
         var totalTimeTextView: TextView = view.findViewById(R.id.total_time)
-        var imageUrl : ImageView = view.findViewById(R.id.img_Url)
+        var imageUrl : ImageView = view.findViewById(R.id.food_thumbnail)
 
         override fun onClick(v: View?) {
             val position = absoluteAdapterPosition

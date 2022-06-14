@@ -73,11 +73,11 @@ tools:context="com.example.recipegenie.view.NewRecipeForm">
                             android:text="Title:"
                             android:textColor="@color/title_color"
                             android:textSize="@dimen/large_card_title_text" />
+
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             >
-
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/edit_text_title"
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -102,7 +102,7 @@ tools:context="com.example.recipegenie.view.NewRecipeForm">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Yield:"
+                            android:text="Servings:"
                             android:textColor="@color/title_color"
                             android:textSize="@dimen/large_card_subtitle_text" />
 
@@ -117,7 +117,8 @@ tools:context="com.example.recipegenie.view.NewRecipeForm">
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="@color/category_btn"
-                                app:errorEnabled="true" />
+                                app:errorEnabled="true"
+                                android:inputType="number"/>
 
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
@@ -147,7 +148,8 @@ tools:context="com.example.recipegenie.view.NewRecipeForm">
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="@color/category_btn"
-                                app:errorEnabled="true" />
+                                app:errorEnabled="true"
+                                android:inputType="number"/>
 
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
@@ -159,7 +161,7 @@ tools:context="com.example.recipegenie.view.NewRecipeForm">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total time:"
+                            android:text="Cook time:"
                             android:textColor="@color/title_color"
                             android:textSize="@dimen/large_card_subtitle_text" />
 
@@ -174,7 +176,8 @@ tools:context="com.example.recipegenie.view.NewRecipeForm">
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="@color/category_btn"
-                                app:errorEnabled="true" />
+                                app:errorEnabled="true"
+                                android:inputType="number"/>
 
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
@@ -264,7 +267,7 @@ tools:context="com.example.recipegenie.view.NewRecipeForm">
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/category_btn"
+                android:backgroundTint="@color/btn_cancel"
                 android:text="Cancel"
                 android:gravity="center"
                 android:textAlignment="center"

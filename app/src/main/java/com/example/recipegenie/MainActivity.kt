@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recipegenie.model.Recipe
 import com.example.recipegenie.view.FavoritesList
 import com.example.recipegenie.view.SearchRecipes
+import com.example.recipegenie.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,10 +41,9 @@ class MainActivity : AppCompatActivity() {
 
         recipeList.add(recipe)
 
-        //COREY CODE
-        //    var vm = MainViewModel
 
-//        vm = MainViewModel(application)
+        var vm = MainViewModel(application)
+        vm.insertRecipes(recipe)
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView_category)
         recyclerView.layoutManager = LinearLayoutManager(

@@ -3,6 +3,7 @@
 
     <!--    home page dimensions-->
     <dimen name="nav_button_margin">60dp</dimen>
+
     <!--    landing page-->
     <dimen name="landingpage_text_width">300dp</dimen>
     <dimen name="landingpage_text">30sp</dimen>
@@ -63,9 +64,9 @@
     <dimen name="linear_text_layout_margins">8dp</dimen>
     <dimen name="recipe_item_title_margin">2dp</dimen>
     <dimen name="recipe_item_subtitle_margin">5dp</dimen>
-    <dimen name="recipe_item_title_text">20dp</dimen>
+    <dimen name="recipe_item_title_text">16dp</dimen>
     <dimen name="recipe_item_id_margin">20dp</dimen>
-    <dimen name="recipe_item_subtitle_text">16sp</dimen>
+    <dimen name="recipe_item_subtitle_text">14sp</dimen>
 
     <!-- large cards dimensions-->
     <dimen name="large_card_margin">10dp</dimen>
