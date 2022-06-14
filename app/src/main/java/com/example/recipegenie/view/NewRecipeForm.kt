@@ -38,18 +38,20 @@ class NewRecipeForm : AppCompatActivity() {
         val btnSubmit: ExtendedFloatingActionButton = findViewById(R.id.btn_add)
         val btnCancel: ExtendedFloatingActionButton = findViewById(R.id.btn_cancel)
 
-
         btnSubmit.setOnClickListener {
-
             val title: String = inputTitle.text.toString()
             val yields: String = inputYields.text.toString() + "servings"
             val prepTime: String = inputPrepTime.text.toString() + "minutes"
             val cookTime: String = inputCookTime.text.toString() + "minutes"
-            val totalTime: String = "${inputPrepTime.toString().toInt() +
-                                     inputCookTime.toString().toInt()} minutes"
+            val totalTime: String = "${
+                inputPrepTime.text.toString().toInt() +
+                        inputCookTime.text.toString().toInt()
+            } minutes"
             val ingredients: String = inputIngredients.text.toString()
             val directions: String = inputDirections.text.toString()
 
+
+            // Form validation
             if (title.isNullOrBlank() || yields.isNullOrBlank() || prepTime.isNullOrBlank() ||
                 cookTime.isNullOrBlank() || ingredients.isNullOrBlank() ||
                 directions.isNullOrBlank()
@@ -80,8 +82,6 @@ class NewRecipeForm : AppCompatActivity() {
                 alertDialog.show()
 
             } else {
-
-
                 val recipe = Recipe(
                     null,
                     true,
@@ -92,7 +92,8 @@ class NewRecipeForm : AppCompatActivity() {
                     totalTime,
                     ingredients,
                     directions,
-                    "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/178761.jpg"
+                    "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/" +
+                            "video-api/assets/178761.jpg"
                 )
 
                 vm.insertRecipes(recipe)
@@ -108,27 +109,15 @@ class NewRecipeForm : AppCompatActivity() {
             }
         }
 
-//        btnCancel.setOnClickListener {
-//            val intent = Intent(this, FavoritesList::class.java)
-//            startActivity(intent)
-//
-//            val message = "cancelled"
-//            val duration = Toast.LENGTH_LONG
-//            val toast = Toast.makeText(applicationContext, message, duration)
-//            toast.show()
-//        }
+        // Cancel button
+        btnCancel.setOnClickListener {
+            val intent = Intent(this, FavoritesList::class.java)
+            startActivity(intent)
 
-//        val message = "cancelled"
-//        val duration = Toast.LENGTH_LONG
-//        val toast = Toast.makeText(applicationContext, message, duration)
-//        toast.show()
+            val message = "cancelled"
+            val duration = Toast.LENGTH_LONG
+            val toast = Toast.makeText(applicationContext, message, duration)
+            toast.show()
+        }
     }
-
-//        btnClear.setOnClickListener {
-//            title.text.clear()
-//            rYield.text.clear()
-//            prepTime.text.clear()
-//            totalTime.text.clear()
-//            ingredients.text.clear()
-//            directions.text.clear()
 }
