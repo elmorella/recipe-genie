@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.recipeGenie">
         <activity
+            android:name=".FeaturedAdapter"
+            android:exported="false" />
+        <activity
             android:name=".view.registration.LoginActivity"
             android:exported="false" />
         <activity

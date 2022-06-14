@@ -1,4 +1,4 @@
-package com.example.recipegenie.viewmodel
+package com.example.recipegenie.viewmodel.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +14,7 @@ class MainActivityAdapter (private var recipeList: List<Recipe>) :
     RecyclerView.Adapter<MainActivityAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder( parent: ViewGroup, viewType: Int)
-    : MainActivityAdapter.ViewHolder {
+    : ViewHolder {
 
         // inflate a view and return it
         var viewInflater = LayoutInflater.from(parent.context)
@@ -22,7 +22,7 @@ class MainActivityAdapter (private var recipeList: List<Recipe>) :
 
         return ViewHolder(viewInflater)
     }
-    override fun onBindViewHolder(holder: MainActivityAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // add current item to the holder
         val recipe = recipeList[position]
         holder.idTextView.text = recipe.recipeId.toString()
@@ -60,4 +60,10 @@ class MainActivityAdapter (private var recipeList: List<Recipe>) :
         this.recipeList = itemList
         notifyDataSetChanged()
     }
+
+//    private fun getRecipes(recipeList: List<Recipe>) {
+//        this.recipeList.clear()
+//        this.recipeList.addAll(recipeList)
+//        recipeAdapter.notifyDataSetChanged()
+//    }
 }

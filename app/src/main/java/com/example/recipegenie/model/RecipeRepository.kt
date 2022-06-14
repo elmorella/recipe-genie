@@ -26,7 +26,6 @@ class RecipeRepository(context: Context) {
             if(res.isSuccessful) {
                 searchResults.postValue(res.body())
                 Log.d("Retrofit Response", "Successful")
-
             } else {
                 Log.d("Retrofit Response", "unsuccessful: RecipeRepository: Line 30")
             }

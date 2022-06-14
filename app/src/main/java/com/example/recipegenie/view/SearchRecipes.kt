@@ -9,7 +9,7 @@ import com.example.recipegenie.MainActivity
 import com.example.recipegenie.R
 import com.example.recipegenie.model.Recipe
 import com.example.recipegenie.viewmodel.MainViewModel
-import com.example.recipegenie.viewmodel.RecipeListAdapter
+import com.example.recipegenie.viewmodel.adapters.RecipeListAdapter
 import com.example.recipegenie.viewmodel.RecipeListGenerator
 
 class SearchRecipes : AppCompatActivity() {

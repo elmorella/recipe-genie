@@ -1,5 +1,7 @@
-package com.example.recipegenie.viewmodel
+package com.example.recipegenie.viewmodel.adapters
 
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,27 +12,22 @@ import coil.load
 import com.example.recipegenie.R
 import com.example.recipegenie.model.Recipe
 
-class RecipeListAdapter(
-    private val recipeList: List<Recipe>,
-    private val onCardClick: (position: Int) -> Unit
-) : RecyclerView.Adapter<RecipeListAdapter.ViewHolder>() {
+class FeaturedAdapter(private var recipeList: List<Recipe>) :
+    RecyclerView.Adapter<FeaturedAdapter.ViewHolder>() {
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder( parent: ViewGroup, viewType: Int)
+            : ViewHolder {
 
         // inflate a view and return it
         var viewInflater = LayoutInflater.from(parent.context)
-            .inflate(R.layout.recipe_list_item_layout, parent, false)
+            .inflate(R.layout.category_card_layout, parent, false)
 
-        return ViewHolder(viewInflater, onCardClick)
+        return ViewHolder(viewInflater)
     }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // add current item to the holder
         val recipe = recipeList[position]
+        holder.idTextView.text = recipe.recipeId.toString()
         holder.titleTextView.text = recipe.title
         holder.yieldTextView.text = recipe.yields
         holder.prepTimeTextView.text = recipe.prepTime
@@ -42,22 +39,27 @@ class RecipeListAdapter(
         return recipeList.size
     }
 
-    class ViewHolder(view: View, private val onCardClick: (position: Int) -> Unit) :
+    class ViewHolder(view: View) :
         RecyclerView.ViewHolder(view), View.OnClickListener {
 
         init {
             itemView.setOnClickListener(this)
         }
 
+        var idTextView: TextView = view.findViewById(R.id.id)
         var titleTextView: TextView = view.findViewById(R.id.title)
         var yieldTextView: TextView = view.findViewById(R.id.yields)
         var prepTimeTextView: TextView = view.findViewById(R.id.prep_time)
         var totalTimeTextView: TextView = view.findViewById(R.id.total_time)
-        var imageUrl: ImageView = view.findViewById(R.id.food_thumbnail)
+        var imageUrl: ImageView = view.findViewById(R.id.img_Url)
 
         override fun onClick(v: View?) {
-            val position = absoluteAdapterPosition
-            onCardClick(position)
+//            val position = absoluteAdapterPosition
+//            onCardClick(position)
         }
+    }
+    fun setItems(itemList: List<Recipe>){
+        this.recipeList = itemList
+        notifyDataSetChanged()
     }
 }
