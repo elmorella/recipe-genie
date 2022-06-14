@@ -17,42 +17,36 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var recipeList = ArrayList<Recipe>()
-        var recipe = Recipe(
-            null,
-            false,
-            "Sample Chicken Recipe from DB",
-            "6 servings",
-            "10 mins",
-            "35 mins",
-            "45 mins",
-            "1 whole chicken\n" +
-                    "1/2 Onion\n" +
-                    "3 tomatoes\n" +
-                    "2 potatoes\n" +
-                    "3 carrorts\n" +
-                    "salt and pepper",
-            "Step 1: Prep the chicken\n" +
-                    "Step 2: Prep the veggies\n" +
-                    "Step 3: prep the pot\n" +
-                    "Step 4: Cook it well",
-            "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/" +
-                    "video-api/assets/351171.jpg"
-        )
-
-        recipeList.add(recipe)
-
+//        var recipe = Recipe(
+//            null,
+//            true,
+//            "Sample Chicken Recipe from DB",
+//            "6 servings",
+//            "10 mins",
+//            "35 mins",
+//            "45 mins",
+//            "1 whole chicken\n" +
+//                    "1/2 Onion\n" +
+//                    "3 tomatoes\n" +
+//                    "2 potatoes\n" +
+//                    "3 carrorts\n" +
+//                    "salt and pepper",
+//            "Step 1: Prep the chicken\n" +
+//                    "Step 2: Prep the veggies\n" +
+//                    "Step 3: prep the pot\n" +
+//                    "Step 4: Cook it well",
+//            "https://img.buzzfeed.com/thumbnailer-prod-us-east-1/" +
+//                    "video-api/assets/351171.jpg"
+//        )
 
         var vm = MainViewModel(application)
-        vm.insertRecipes(recipe)
+//        vm.insertRecipes(recipe)
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView_category)
         recyclerView.layoutManager = LinearLayoutManager(
             this, LinearLayoutManager.HORIZONTAL,
             false
         )
-//
-//        var adapter = RecipeAdapter({ position -> onCardClick(position) }, recipeList)
-//        recyclerView.adapter = adapter
 
         var navBtnSearch: View = findViewById(R.id.nav_btn_search)
         var navBtnHome: View = findViewById(R.id.nav_btn_home)
@@ -72,17 +66,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(myIntent)
         }
     }
-
-//    fun onCardClick(position: Int) {
-//        println("position:::$position")
-//        val myIntent = Intent(this, RecipePage::class.java)
-//        startActivity(myIntent)
-//    }
-
-//    fun getRecipe(recipeList: List<Recipe>) {
-//        this.recipeList.clear()
-//        this.recipeList.addAll(recipeList)
-//        adapter.notifyDataSetChanged()
-//    }
 }
 

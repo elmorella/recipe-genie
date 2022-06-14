@@ -62,10 +62,10 @@ class RecipeRepository(context: Context) {
 //        return db?.findRecipeWithId(search)!!
 //    }
 //
-//    fun findRecipeWithTitle(search: String): List<Recipe> {
-//
-//        return db?.findRecipeWithTitle(search)!!
-//    }
+    fun findRecipeWithTitle(search: String): List<Recipe> {
+
+        return db?.findRecipeWithTitle(search)!!
+    }
 
     // insert things in an Async way
 }

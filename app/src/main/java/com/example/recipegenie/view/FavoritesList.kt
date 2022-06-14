@@ -11,7 +11,6 @@ import com.example.recipegenie.R
 import com.example.recipegenie.model.Recipe
 import com.example.recipegenie.viewmodel.MainViewModel
 import com.example.recipegenie.viewmodel.RecipeAdapter
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class FavoritesList : AppCompatActivity() {
 
@@ -32,8 +31,7 @@ class FavoritesList : AppCompatActivity() {
         }
 
             // create an adapter
-            recipeAdapter = RecipeAdapter(recipeList)
-//                { position -> onCardClick(position) }, recipeList)
+            recipeAdapter = RecipeAdapter(recipeList, { position -> onCardClick(position) })
             // take the views adapter then assign it to the custom adapter we created
             recyclerView.adapter = recipeAdapter
 
@@ -57,7 +55,17 @@ class FavoritesList : AppCompatActivity() {
 
     private fun onCardClick(position: Int) {
         val myIntent = Intent(this, RecipePage::class.java)
+        myIntent.putExtra("id", recipeList[position].recipeId)
+        myIntent.putExtra("isFavorite", recipeList[position].isFavorite)
         myIntent.putExtra("title", recipeList[position].title)
+        myIntent.putExtra("yields", recipeList[position].yields)
+        myIntent.putExtra("prepTime", recipeList[position].prepTime)
+        myIntent.putExtra("cookTime", recipeList[position].cookTime)
+        myIntent.putExtra("totalTime", recipeList[position].totalTime)
+        myIntent.putExtra("ingredients", recipeList[position].ingredients)
+        myIntent.putExtra("directions", recipeList[position].directions)
+        myIntent.putExtra("imageUrl", recipeList[position].imageUrl)
+
         startActivity(myIntent)
     }
 

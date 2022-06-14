@@ -44,4 +44,9 @@ class MainViewModel(app: Application): AndroidViewModel(app) {
     fun deleteRecipe(recipe: Recipe) = viewModelScope.launch {
         repo.deleteRecipe(recipe)
     }
+
+    fun findRecipeWithTitle(search: String): List<Recipe> {
+
+        return repo.findRecipeWithTitle(search)
+    }
 }

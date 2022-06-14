@@ -1,90 +1,125 @@
 package com.example.recipegenie.view
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import coil.load
 import com.example.recipegenie.MainActivity
 import com.example.recipegenie.R
 import com.example.recipegenie.model.RecipeRepository
-import com.example.recipegenie.view.UpdateRecipe
 import com.example.recipegenie.model.Recipe
 import com.example.recipegenie.viewmodel.MainViewModel
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
-//TODO: Need to customize page to display from all sources
-
 class RecipePage : AppCompatActivity() {
-    lateinit var vm: MainViewModel
+
+    lateinit var mainViewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_page)
 
-        val repo: RecipeRepository by lazy {
-            RecipeRepository(this)
-        }
-        vm = MainViewModel(application)
+        mainViewModel = MainViewModel(application)
 
-        //populate TextFields with recipe data from repo and get recipeID as a String
-        var recipe: Recipe = getData(repo)
+        var recipe = mainViewModel.findRecipeWithTitle(intent.getStringExtra("title")!!)[0]
+        populateFields(recipe)
+
+
         val btnHome: ExtendedFloatingActionButton = findViewById(R.id.btn_cancel)
         btnHome.setOnClickListener {
-            val intent: Intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
-        val btnEdit: ExtendedFloatingActionButton = findViewById(R.id.btn_edit)
-        btnEdit.setOnClickListener {
-            val intent: Intent = Intent(this, UpdateRecipe::class.java)
-            intent.putExtra("title", recipe.title)
-            startActivity(intent)
-        }
-
+//        val btnEdit: ExtendedFloatingActionButton = findViewById(R.id.btn_edit)
+//        btnEdit.setOnClickListener {
+//            val intent: Intent = Intent(this, UpdateRecipe::class.java)
+//            intent.putExtra("title", recipe.title)
+//            startActivity(intent)
+//        }
 
         val btnDelete: ExtendedFloatingActionButton = findViewById(R.id.btn_delete)
         btnDelete.setOnClickListener {
-//          setOnClickListener  val builder = AlertDialog.Builder(this)
-//            // Set Alert Title
-//            builder.setTitle("Are you sure you want to delete recipe?")
-//            // Set the message show for the Alert time
-//            builder.setMessage("Hitting OK will delete the recipe")
-//            builder.setCancelable(true)
-//            builder.setNegativeButton("Cancel", DialogInterface.OnClickListener()
-//            { dialog, which -> dialog.cancel() })
 
-//            builder.setPositiveButton(
-//                "OK",DialogInterface.OnClickListener() {
-//
-//             )).show()
-//
-
-            vm.deleteRecipe(recipe)
-
-            val intent = Intent(this, FavoritesList::class.java)
-            startActivity(intent)
+            //TODO cancel confirmation dialog
+            mainViewModel.deleteRecipe(recipe)
 
             val message = "recipe deleted"
             val duration = Toast.LENGTH_LONG
             val toast = Toast.makeText(applicationContext, message, duration)
             toast.show()
+
+            val intent = Intent(this, FavoritesList::class.java)
+            startActivity(intent)
         }
     }
 
-    private fun getData(repo: RecipeRepository): Recipe {
+//    private fun getRecipeFromIntent(): Recipe {
+//        var recipe = Recipe(
+//            intent.getStringExtra("id")?.toInt(),
+//            intent.getBooleanExtra("isFavorite", false),
+//            intent.getStringExtra("title").toString(),
+//            intent.getStringExtra("yields").toString(),
+//            intent.getStringExtra("prepTime").toString(),
+//            intent.getStringExtra("cookTime").toString(),
+//            intent.getStringExtra("totalTime").toString(),
+//            intent.getStringExtra("ingredients").toString(),
+//            intent.getStringExtra("directions").toString(),
+//            intent.getStringExtra("imageUrl").toString()
+//        )
+//        var recipe: List<Recipe> =
+//            vm.findRecipeWithTitle(intent.getStringExtra("title").toString())
+//        return recipe[0]
+//    }
+
+    private fun populateFields(recipe: Recipe) {
         // Map TextViews in recipe page
         var id: TextView = findViewById(R.id.id)
         var title: TextView = findViewById(R.id.title)
-        var yields: TextView = findViewById(R.id.r_yield)
+        var yields: TextView = findViewById(R.id.yields)
         var prepTime: TextView = findViewById(R.id.prep_time)
         var totalTime: TextView = findViewById(R.id.total_time)
         var ingredients: TextView = findViewById(R.id.ingredients)
         var directions: TextView = findViewById(R.id.directions)
+        var recipePhoto: ImageView = findViewById(R.id.image_recipe_photo)
+        var iconIsFavorite: ImageView = findViewById(R.id.icon_is_fav)
+
+        id.text = recipe.recipeId.toString()
+        title.text = recipe.title
+        yields.text = recipe.yields
+        prepTime.text = recipe.prepTime
+        totalTime.text = recipe.totalTime
+        ingredients.text = recipe.ingredients
+        directions.text = recipe.directions
+        recipePhoto.load(recipe.imageUrl)
+
+
+        if (recipe.isFavorite) {
+            iconIsFavorite.setImageResource(R.drawable.fav_heart_foreground)
+        } else {
+            iconIsFavorite.setImageResource(R.drawable.fav_heart_gray)
+        }
+    }
+
+    fun getDataFromDB(repo: RecipeRepository): Recipe {
+        // Map TextViews in recipe page
+        var id: TextView = findViewById(R.id.id)
+        var title: TextView = findViewById(R.id.title)
+        var yields: TextView = findViewById(R.id.yields)
+        var prepTime: TextView = findViewById(R.id.prep_time)
+        var totalTime: TextView = findViewById(R.id.total_time)
+        var ingredients: TextView = findViewById(R.id.ingredients)
+        var directions: TextView = findViewById(R.id.directions)
+        var iconIsFavorite: ImageView = findViewById(R.id.icon_is_fav)
 
         // Get recipe from repo with ID
-//        var recipe: List<Recipe> =
-//            repo.findRecipeWithTitle(intent.getStringExtra("title").toString())
+        var recipe: List<Recipe> =
+            repo.findRecipeWithTitle(intent.getStringExtra("title").toString())
 
         //TODO: Null validation
 
@@ -101,8 +136,9 @@ class RecipePage : AppCompatActivity() {
 
         return Recipe(
             id.text.toString().toInt(), false, title.text.toString(), yields.text.toString(),
-            prepTime.text.toString(),"Need to calculate", totalTime.text.toString(),
+            prepTime.text.toString(), "Need to calculate", totalTime.text.toString(),
             ingredients.text.toString(), directions.text.toString(), "get URL"
         )
     }
 }
+
