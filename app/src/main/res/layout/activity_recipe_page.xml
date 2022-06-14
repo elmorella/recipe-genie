@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_color"
     android:orientation="vertical"
-    tools:context=".view.RecipePage">
-
+    tools:context="com.example.recipegenie.view.RecipePage">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -23,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="@dimen/card_corner_radius">
+                app:cardCornerRadius="@dimen/large_card_radius">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -40,10 +39,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginStart="@dimen/margin_card_large"
+                            android:layout_marginStart="@dimen/large_card_margin"
                             android:text="ID: "
                             android:textColor="@color/title_color"
-                            android:textSize="@dimen/text_small" />
+                            android:textSize="@dimen/large_card_id_text" />
 
                         <TextView
                             android:id="@+id/id"
@@ -54,13 +53,13 @@
                             android:layout_weight="1"
                             android:text="###"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/text_small" />
+                            android:textSize="@dimen/large_card_id_text" />
 
                         <ImageView
                             android:layout_width="@dimen/drawable_star_size"
                             android:layout_height="@dimen/drawable_star_size"
                             android:layout_gravity="end"
-                            android:src="@mipmap/fav_heart"/>
+                            android:src="@drawable/fav_heart_foreground"/>
 
                     </LinearLayout>
 
@@ -69,12 +68,12 @@
                         android:id="@+id/title"
                         android:layout_width="323dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_card_large"
+                        android:layout_margin="@dimen/large_card_margin"
                         android:text="Recipe Title"
                         android:textStyle="bold"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/text_large" />
+                        android:textSize="@dimen/large_card_title_text" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -84,23 +83,23 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_card_large"
-                            android:layout_marginBottom="@dimen/margin_card_large"
+                            android:layout_marginLeft="@dimen/large_card_margin"
+                            android:layout_marginBottom="@dimen/large_card_margin"
                             android:text="Yield:"
                             android:textAlignment="textStart"
                             android:textColor="@color/title_color"
-                            android:textSize="@dimen/text_medium" />
+                            android:textSize="@dimen/large_card_subtitle_text" />
 
                         <TextView
                             android:id="@+id/r_yield"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_card_large"
-                            android:layout_marginBottom="@dimen/margin_card_large"
+                            android:layout_marginLeft="@dimen/large_card_title_margins"
+                            android:layout_marginBottom="@dimen/large_card_margin"
                             android:text="# of servings"
                             android:textAlignment="textStart"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/text_medium" />
+                            android:textSize="@dimen/large_card_subtitle_text" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -111,23 +110,23 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_card_large"
-                            android:layout_marginBottom="@dimen/margin_card_large"
+                            android:layout_marginLeft="@dimen/large_card_margin"
+                            android:layout_marginBottom="@dimen/large_card_margin"
                             android:text="Total time:"
                             android:textAlignment="textStart"
                             android:textColor="@color/title_color"
-                            android:textSize="@dimen/text_medium" />
+                            android:textSize="@dimen/large_card_subtitle_text" />
 
                         <TextView
                             android:id="@+id/total_time"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_card_large"
-                            android:layout_marginBottom="@dimen/margin_card_large"
+                            android:layout_marginLeft="@dimen/large_card_title_margins"
+                            android:layout_marginBottom="@dimen/large_card_margin"
                             android:text="# mins"
                             android:textAlignment="textStart"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/text_medium" />
+                            android:textSize="@dimen/large_card_subtitle_text" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -138,64 +137,64 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_card_large"
-                            android:layout_marginBottom="@dimen/margin_card_large"
+                            android:layout_marginLeft="@dimen/large_card_margin"
+                            android:layout_marginBottom="@dimen/large_card_margin"
                             android:text="Prep time:"
                             android:textAlignment="textStart"
                             android:textColor="@color/title_color"
-                            android:textSize="@dimen/text_medium" />
+                            android:textSize="@dimen/large_card_subtitle_text" />
 
                         <TextView
                             android:id="@+id/prep_time"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/margin_card_large"
-                            android:layout_marginBottom="@dimen/margin_card_large"
+                            android:layout_marginLeft="@dimen/large_card_title_margins"
+                            android:layout_marginBottom="@dimen/large_card_margin"
                             android:text="# mins"
                             android:textAlignment="textStart"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/text_medium" />
+                            android:textSize="@dimen/large_card_subtitle_text" />
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_card_large"
+                        android:layout_marginLeft="@dimen/large_card_margin"
                         android:text="Ingredients:"
                         android:textAlignment="textStart"
                         android:textColor="@color/title_color"
-                        android:textSize="@dimen/text_medium" />
+                        android:textSize="@dimen/large_card_subtitle_text" />
 
                     <TextView
                         android:id="@+id/ingredients"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_card_large"
+                        android:layout_marginLeft="@dimen/large_card_margin"
                         android:text="1 ingredient "
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/text_medium" />
+                        android:textSize="@dimen/large_card_subtitle_text" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_card_large"
-                        android:layout_marginTop="@dimen/margin_card_large"
+                        android:layout_marginLeft="@dimen/large_card_margin"
+                        android:layout_marginTop="@dimen/large_card_margin"
                         android:text="Directions:"
                         android:textAlignment="textStart"
                         android:textColor="@color/title_color"
-                        android:textSize="@dimen/text_medium" />
+                        android:textSize="@dimen/large_card_subtitle_text" />
 
                     <TextView
                         android:id="@+id/directions"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_card_large"
-                        android:layout_marginBottom="@dimen/margin_card_large"
+                        android:layout_marginLeft="@dimen/large_card_margin"
+                        android:layout_marginBottom="@dimen/large_card_margin"
                         android:text="@string/lorem_ipsum_short"
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/text_medium" />
+                        android:textSize="@dimen/large_card_subtitle_text" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -215,6 +214,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/btn_cancel"
                     android:text="delete"
+                    android:gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/white" />
 
@@ -226,6 +226,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/category_btn"
                     android:text="edit"
+                    android:gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/white" />
 
@@ -237,6 +238,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/category_btn"
                     android:text="Cancel"
+                    android:gravity="center"
                     android:textAlignment="center"
                     android:textColor="@color/white" />
             </LinearLayout>

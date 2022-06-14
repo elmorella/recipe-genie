@@ -25,6 +25,7 @@
     <color name="searchbar_color">#293863</color>
     <color name="title_color">#fe9900</color>
     <color name="category_btn">#293863</color>
-    <color name="hover_btn">#fe9900</color>
     <color name="gradient_color">#3b4a75</color>
+    <color name="query_hint_color">#009688</color>
+    <color name="selector_color">#FF0000</color>
 </resources>

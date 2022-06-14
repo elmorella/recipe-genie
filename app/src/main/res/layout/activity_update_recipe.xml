@@ -23,7 +23,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                app:cardCornerRadius="@dimen/card_corner_radius">
+                app:cardCornerRadius="@dimen/large_card_radius">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -40,10 +40,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginStart="@dimen/margin_card_large"
+                            android:layout_marginStart="@dimen/large_card_margin"
                             android:text="ID: "
                             android:textColor="@color/title_color"
-                            android:textSize="@dimen/text_small" />
+                            android:textSize="@dimen/large_card_subtitle_text" />
 
                         <TextView
                             android:id="@+id/text_view_id"
@@ -54,7 +54,7 @@
                             android:layout_weight="1"
                             android:text="####"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/text_small" />
+                            android:textSize="@dimen/large_card_subtitle_text" />
 
                         <ImageView
                             android:layout_width="@dimen/drawable_star_size"
@@ -63,177 +63,177 @@
                             android:src="@mipmap/fav_heart" />
 
                     </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    android:orientation="vertical">
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Title:"
-            android:textColor="@color/title_color"
-            android:textSize="@dimen/text_medium" />
-                    <com.google.android.material.textfield.TextInputLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        >
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edit_text_title"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:backgroundTint="@color/category_btn"
-                            app:errorEnabled="true" />
-
-
-                    </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Yield:"
-                            android:textColor="@color/title_color"
-                            android:textSize="@dimen/text_medium" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_text_yield"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Title:"
+                                android:textColor="@color/title_color"
+                                android:textSize="@dimen/large_card_subtitle_text" />
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:backgroundTint="@color/category_btn"
-                                app:errorEnabled="true" />
+                                >
 
-                        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Prep time:"
-                            android:textColor="@color/title_color"
-                            android:textSize="@dimen/text_medium" />
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_title"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/category_btn"
+                                    app:errorEnabled="true" />
 
-                        <com.google.android.material.textfield.TextInputLayout
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            >
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Yield:"
+                                android:textColor="@color/title_color"
+                                android:textSize="@dimen/large_card_subtitle_text" />
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_text_prep_time"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:backgroundTint="@color/category_btn"
-                                app:errorEnabled="true" />
+                                >
 
-                        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Total time:"
-                            android:textColor="@color/title_color"
-                            android:textSize="@dimen/text_medium" />
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_yield"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/category_btn"
+                                    app:errorEnabled="true" />
 
-                        <com.google.android.material.textfield.TextInputLayout
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            >
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Prep time:"
+                                android:textColor="@color/title_color"
+                                android:textSize="@dimen/large_card_subtitle_text" />
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_text_cook_time"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:backgroundTint="@color/category_btn"
-                                app:errorEnabled="true" />
+                                >
 
-                        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Ingredients:"
-                            android:textColor="@color/title_color"
-                            android:textSize="@dimen/text_medium" />
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_prep_time"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/category_btn"
+                                    app:errorEnabled="true" />
 
-                        <com.google.android.material.textfield.TextInputLayout
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            >
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Total time:"
+                                android:textColor="@color/title_color"
+                                android:textSize="@dimen/large_card_subtitle_text" />
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_text_ingredients"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:backgroundTint="@color/category_btn"
-                                android:inputType="textMultiLine"
-                                app:errorEnabled="true" />
-                        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Directions:"
-                            android:textColor="@color/title_color"
-                            android:textSize="@dimen/text_medium" />
+                                >
 
-                        <com.google.android.material.textfield.TextInputLayout
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_cook_time"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/category_btn"
+                                    app:errorEnabled="true" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            >
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ingredients:"
+                                android:textColor="@color/title_color"
+                                android:textSize="@dimen/large_card_subtitle_text" />
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edit_text_directions"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                >
 
-                                android:backgroundTint="@color/category_btn"
-                                android:inputType="textMultiLine"
-                                app:errorEnabled="true" />
-                        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
-                </LinearLayout>
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_ingredients"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/category_btn"
+                                    android:inputType="textMultiLine"
+                                    app:errorEnabled="true" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Directions:"
+                                android:textColor="@color/title_color"
+                                android:textSize="@dimen/large_card_subtitle_text" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                >
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edit_text_directions"
+                                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+
+                                    android:backgroundTint="@color/category_btn"
+                                    android:inputType="textMultiLine"
+                                    app:errorEnabled="true" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -249,6 +249,7 @@
                     android:id="@+id/btn_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/category_btn"
@@ -260,6 +261,7 @@
                     android:id="@+id/btn_cancel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/category_btn"
