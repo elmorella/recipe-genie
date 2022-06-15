@@ -4,8 +4,6 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.recipegenie.RecipeResults
-import com.example.recipegenie.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -17,11 +15,11 @@ class RecipeRepository(context: Context) {
     var searchResults = MutableLiveData<RecipeResults>()
 
     // Gets recipes from API and returns MutableLiveData<RecipeResults>
-    fun getSearchResults(offset: Int, limit: Int, tags: String, q: String) :
+    fun getSearchResults(offset: Int, limit: Int, tags: String, query: String) :
     MutableLiveData<RecipeResults>{
         CoroutineScope(Dispatchers.IO).launch {
 
-            var res = retrofitClient.getSearchResults(offset, limit, tags, q)
+            var res = retrofitClient.getSearchResults(offset, limit, tags, query)
 
             if(res.isSuccessful) {
                 searchResults.postValue(res.body())

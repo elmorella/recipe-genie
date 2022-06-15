@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:text="Item Name"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/category_card_title_text"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -41,7 +41,7 @@
                 android:layout_marginTop="5dp"
                 android:text="Total Time: "
                 android:textColor="@color/title_color"
-                android:textSize="10sp" />
+                android:textSize="@dimen/category_card_subtitle_text" />
 
             <TextView
                 android:id="@+id/total_time"
@@ -51,7 +51,7 @@
                 android:layout_marginTop="5dp"
                 android:text="#### "
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="@dimen/category_card_subtitle_text" />
         </LinearLayout>
 
         <LinearLayout
@@ -65,7 +65,7 @@
                 android:layout_marginTop="5dp"
                 android:text="Prep Time: "
                 android:textColor="@color/title_color"
-                android:textSize="10sp" />
+                android:textSize="@dimen/category_card_subtitle_text" />
 
             <TextView
                 android:id="@+id/prep_time"
@@ -75,7 +75,7 @@
                 android:layout_marginTop="5dp"
                 android:text="#### "
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="@dimen/category_card_subtitle_text" />
         </LinearLayout>
 
         <LinearLayout
@@ -89,7 +89,7 @@
                 android:layout_marginTop="5dp"
                 android:text="Yield: "
                 android:textColor="@color/title_color"
-                android:textSize="10sp" />
+                android:textSize="@dimen/category_card_subtitle_text" />
 
             <TextView
                 android:id="@+id/yields"
@@ -99,31 +99,12 @@
                 android:layout_marginTop="5dp"
                 android:text="#### "
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="@dimen/category_card_subtitle_text" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="ID: "
-                android:textColor="@color/title_color"
-                android:textSize="10sp" />
-
-            <TextView
-                android:id="@+id/id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:text="#### "
-                android:textColor="@color/white"
-                android:textSize="10sp" />
-        </LinearLayout>
+            android:orientation="horizontal"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

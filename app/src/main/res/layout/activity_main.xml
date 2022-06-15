@@ -57,6 +57,7 @@
             android:orientation="horizontal"
             >
             <Button
+                android:id="@+id/btn_breakfast"
                 android:layout_width="96dp"
                 android:layout_height="40dp"
                 android:text="Breakfast"
@@ -69,15 +70,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center">
-            <Button
-                android:layout_width="96dp"
-                android:layout_height="40dp"
-                android:text="Lunch"
-                android:textSize="10sp"
-                android:background="@drawable/category_btn"
-                app:backgroundTint="@null"/>
+
+                <Button
+                    android:id="@+id/btn_lunch"
+                    android:layout_width="96dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/category_btn"
+                    android:text="Lunch"
+                    android:textSize="10sp"
+                    app:backgroundTint="@null" />
             </RelativeLayout>
             <Button
+                android:id="@+id/btn_dinner"
                 android:layout_width="96dp"
                 android:layout_height="40dp"
                 android:text="Dinner"

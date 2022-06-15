@@ -49,8 +49,8 @@
     <dimen name="category_card_radius">20dp</dimen>
     <dimen name="category_card_padding">5dp</dimen>
     <dimen name="category_card_image_height">100dp</dimen>
-    <dimen name="category_card_title">20sp</dimen>
-    <dimen name="category_card_subtitle">10sp</dimen>
+    <dimen name="category_card_title_text">12sp</dimen>
+    <dimen name="category_card_subtitle_text">8sp</dimen>
     <dimen name="category_card_margins">5dp</dimen>
 
     <!--recipe item list layout dimensions-->

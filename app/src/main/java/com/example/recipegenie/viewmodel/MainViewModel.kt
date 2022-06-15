@@ -23,10 +23,10 @@ class MainViewModel(app: Application): AndroidViewModel(app) {
         recipeList = repo.getAllRecipes()
     }
 
-    fun getSearchResults(offset: Int, limit: Int, tags: String, search: String)
+    fun getSearchResults(offset: Int, limit: Int, tags: String, query: String)
     = viewModelScope.launch{
 
-        searchResults = repo.getSearchResults(offset, limit, tags, search)
+        searchResults = repo.getSearchResults(offset, limit, tags, query)
     }
 
     fun getAllRecipes() = viewModelScope.launch {

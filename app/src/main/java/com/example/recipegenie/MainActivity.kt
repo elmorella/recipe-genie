@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipegenie.model.Recipe
@@ -49,14 +51,26 @@ class MainActivity : AppCompatActivity() {
 
         var viewModel = MainViewModel(application)
         viewModel.insertRecipes(recipe)
-        populateCategoriesView(viewModel)
+        populateCategoriesView(viewModel,"","")
         populateFavoritesView(viewModel)
 
+        var btnBreakfast: Button = findViewById(R.id.btn_breakfast)
+        var btnLunch: Button = findViewById(R.id.btn_lunch)
+        var btnDinner: Button = findViewById(R.id.btn_dinner)
 
-        var navBtnSearch: View = findViewById(R.id.nav_btn_search)
+        var navBtnSearch: ImageView = findViewById(R.id.nav_btn_search)
         var navBtnHome: View = findViewById(R.id.nav_btn_home)
         var navBtnFavorites: View = findViewById(R.id.nav_btn_favorites)
 
+        btnBreakfast.setOnClickListener {
+            populateCategoriesView(viewModel, "breakfast", "")
+        }
+        btnLunch.setOnClickListener {
+            populateCategoriesView(viewModel, "lunch", "")
+        }
+        btnDinner.setOnClickListener {
+            populateCategoriesView(viewModel, "dinner", "")
+        }
         navBtnSearch.setOnClickListener {
             val myIntent = Intent(this, SearchRecipes::class.java)
             startActivity(myIntent)
@@ -65,7 +79,6 @@ class MainActivity : AppCompatActivity() {
             val myIntent = Intent(this, MainActivity::class.java)
             startActivity(myIntent)
         }
-
         navBtnFavorites.setOnClickListener {
             val myIntent = Intent(this, RecipeListActivity::class.java)
             myIntent.putExtra("listSource", "Favorites")
@@ -90,9 +103,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun populateCategoriesView(viewModel: MainViewModel) {
+    fun populateCategoriesView(viewModel: MainViewModel, tag: String, query: String) {
         this.recipeList.clear()
-        viewModel.getSearchResults(0, 20, "dinner", "")
+        viewModel.getSearchResults(0, 20, tag, query)
         var mutableLiveData = viewModel.searchResults
         mutableLiveData.observe(this) {
             var recipeListGenerator = RecipeListGenerator()
