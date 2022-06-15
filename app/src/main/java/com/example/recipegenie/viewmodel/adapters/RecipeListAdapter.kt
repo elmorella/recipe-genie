@@ -11,8 +11,8 @@ import com.example.recipegenie.R
 import com.example.recipegenie.model.Recipe
 
 class RecipeListAdapter(
-    private val recipeList: List<Recipe>,
-    private val onCardClick: (position: Int) -> Unit
+    private var recipeList: List<Recipe>,
+    private var onCardClick: (position: Int) -> Unit
 ) : RecyclerView.Adapter<RecipeListAdapter.ViewHolder>() {
 
     override fun getItemId(position: Int): Long {
@@ -59,5 +59,9 @@ class RecipeListAdapter(
             val position = absoluteAdapterPosition
             onCardClick(position)
         }
+    }
+    fun setItems(itemList: List<Recipe>){
+        this.recipeList = itemList
+        notifyDataSetChanged()
     }
 }

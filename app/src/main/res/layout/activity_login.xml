@@ -1,188 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.recipegenie.view.registration.LoginActivity">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/background_color"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:context=".view.registration.LoginActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/username1"
-        style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="186dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        app:helperText=" *Required"
-        app:helperTextTextColor="@color/purple_200"
-        app:layout_constraintBottom_toTopOf="@+id/password1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:placeholderText="User Name"
-        tools:ignore="MissingConstraints">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Your Email Id" />
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password1"
-        style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="397dp"
-        app:endIconMode="password_toggle"
-        app:helperText=" *Required"
-        app:helperTextTextColor="@color/purple_200"
-        app:layout_constraintBottom_toTopOf="@+id/button21"
+    <ImageView
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
+        android:src="@drawable/genie_2"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/image_margin_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username1"
-        app:placeholderText="Pasword"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword"
+            android:layout_margin="@dimen/sign_in_layout_margin"
+            android:layout_weight="1"
+            app:cardCornerRadius="@dimen/image_card_radius"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
 
-            tools:ignore="MissingConstraints" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/card_background"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/sign_in_padding"
+                android:paddingTop="@dimen/sign_in_padding"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/username1"
+                    style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/sign_in_layout_margin"
+                    android:layout_marginRight="@dimen/sign_in_layout_margin"
+                    app:helperText="@string/helper_text"
+                    app:helperTextTextColor="@color/purple_200"
+                    android:textColorHint="@color/query_hint_color"
+                    tools:ignore="MissingConstraints"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/button21"
-        style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="397dp"
-        android:layout_centerHorizontal="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
-        app:layout_constraintStart_toStartOf="@id/password1"
-        app:layout_constraintTop_toBottomOf="@+id/password1"
-        tools:ignore="MissingConstraints">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/email_hint"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:backgroundTint="@color/category_btn"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="85dp"
-            android:orientation="horizontal">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/password1"
+                    style="@style/ThemeOverlay.Material3.TextInputEditText.FilledBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/sign_in_layout_margin"
+                    android:layout_marginRight="@dimen/sign_in_layout_margin"
+                    android:layout_marginTop="@dimen/sign_in_layout_margin"
+                    app:endIconMode="password_toggle"
+                    app:helperText="@string/helper_text"
+                    app:helperTextTextColor="@color/purple_200"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textColorHint="@color/query_hint_color"
+                    tools:ignore="MissingConstraints">
 
-            <Button
-                android:id="@+id/cancel_btn"
-                android:layout_width="150dp"
-                android:layout_height="60dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginRight="50dp"
-                android:layout_marginBottom="100dp"
-                android:background="@drawable/sign_in_btn"
-                android:text="Cancel"
-                android:textSize="20sp"
-                app:backgroundTint="@null" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/password_hint"
+                        android:inputType="textPassword"
+                        android:backgroundTint="@color/category_btn"
+                        tools:ignore="MissingConstraints"
+                        android:fontFamily="@font/montserrat_regular"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
 
-            <Button
-                android:id="@+id/sign_in_btn"
-                android:layout_width="150dp"
-                android:layout_height="60dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginRight="50dp"
-                android:layout_marginBottom="100dp"
-                android:background="@drawable/sign_in_btn"
-                android:text="Sign In"
-                android:textSize="20sp"
-                app:backgroundTint="@null" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="75dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Forgot Password?"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                />
-            <TextView
-                android:id="@+id/reset_pwd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Reset Password"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_marginLeft="5dp"
-                android:onClick="onClick"
-                android:clickable="true"
-                tools:ignore="OnClick" />
-        </LinearLayout>
-        <!-- <LinearLayout
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:orientation="horizontal">
-     <Button
-         android:id="@+id/login"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="Login"
-         android:layout_marginLeft="16dp"
-         tools:ignore="MissingConstraints"
-         tools:layout_editor_absoluteX="206dp"
-         tools:layout_editor_absoluteY="407dp" />
- -->
-        <!-- <Button
-             android:id="@+id/guest"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:text="Guest"
-             android:layout_marginLeft="16dp"
-             tools:ignore="MissingConstraints"
-             tools:layout_editor_absoluteX="63dp"
-             tools:layout_editor_absoluteY="407dp" />-->
-    </com.google.android.material.textfield.TextInputLayout>>
-    <!--     <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_marginTop="16dp"
-             android:orientation="horizontal">
-     <TextView
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="New Here!"
-         android:textSize="30sp"
-         tools:ignore="MissingConstraints"
-         tools:layout_editor_absoluteX="30dp"
-         tools:layout_editor_absoluteY="520dp"></TextView>
-     <Button
-         android:id="@+id/sign_up"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="Sign Up"
-         tools:ignore="MissingConstraints"
-         tools:layout_editor_absoluteX="178dp"
-         tools:layout_editor_absoluteY="513dp" />
-         </LinearLayout>
- -->
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/sign_in_button_margin_top"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <Button
+                        android:id="@+id/sign_in_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/sign_in_button_margin"
+                        android:background="@drawable/sign_in_btn"
+                        android:text="@string/btn_sign_in"
+                        android:textSize="@dimen/sign_in_text"
+                        android:fontFamily="@font/roboto_bold"
+                        app:backgroundTint="@null"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                    <Button
+                        android:id="@+id/cancel_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sign_in_btn"
+                        android:text="@string/btn_cancel"
+                        android:textSize="@dimen/sign_in_text"
+                        android:fontFamily="@font/roboto_bold"
+                        android:layout_marginLeft="@dimen/sign_in_button_margin"
+                        app:backgroundTint="@null"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/sign_in_layout_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/forgot_password"
+                        android:textSize="@dimen/sign_in_text"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/montserrat_bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+                    <TextView
+                        android:id="@+id/reset_pwd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/reset_password"
+                        android:textSize="@dimen/sign_in_text"
+                        android:textColor="@color/white"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:layout_marginLeft="@dimen/sign_in_layout_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+</LinearLayout>

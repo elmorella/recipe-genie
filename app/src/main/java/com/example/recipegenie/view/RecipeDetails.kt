@@ -24,9 +24,26 @@ class RecipeDetails : AppCompatActivity() {
 
         mainViewModel = MainViewModel(application)
 
-        var recipe = mainViewModel.findRecipeWithTitle(intent.getStringExtra("title")!!)[0]
-        populateFields(recipe)
+        var recipe: Recipe
+//        if (!(intent.getBooleanExtra("isFavorite", false))!!) {
+//
+//            recipe = mainViewModel.findRecipeWithTitle(intent.getStringExtra("title")!!)[0]
+//            populateFields(recipe)
+//
+//        } else {
 
+            recipe = Recipe(intent.getIntExtra("id", 0),
+                            intent.getBooleanExtra("isFavorite", false),
+                            intent.getStringExtra("title")!!,
+                            intent.getStringExtra("yields")!!,
+                            intent.getStringExtra("prepTime")!!,
+                            intent.getStringExtra("cookTime")!!,
+                            intent.getStringExtra("totalTime")!!,
+                            intent.getStringExtra("ingredients")!!,
+                            intent.getStringExtra("directions")!!,
+                            intent.getStringExtra("imageUrl")!!)
+            populateFields(recipe)
+//        }
 
         val btnHome: ExtendedFloatingActionButton = findViewById(R.id.btn_cancel)
         btnHome.setOnClickListener {

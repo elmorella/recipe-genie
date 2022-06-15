@@ -64,5 +64,8 @@ class RecipeRepository(context: Context) {
         return db?.findRecipeWithTitle(search)!!
     }
 
+    fun search(searchText:String): LiveData<List<Recipe>>? {
+        return db?.search(searchText)
+    }
     // insert things in an Async way
 }

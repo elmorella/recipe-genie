@@ -4,19 +4,29 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.SearchView
+import android.widget.RelativeLayout
+import android.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.recipegenie.MainActivity
 import com.example.recipegenie.R
+import com.example.recipegenie.model.AppDatabase
 import com.example.recipegenie.model.Recipe
+import com.example.recipegenie.model.RecipeRepository
+import com.example.recipegenie.view.NewRecipeForm
+import com.example.recipegenie.view.RecipeDetails
+import com.example.recipegenie.view.RecipeListActivity
 import com.example.recipegenie.viewmodel.MainViewModel
-import com.example.recipegenie.viewmodel.adapters.RecipeListAdapter
 import com.example.recipegenie.viewmodel.RecipeListGenerator
+import com.example.recipegenie.viewmodel.adapters.RecipeListAdapter
 
 class SearchRecipes : AppCompatActivity() {
 
     var recipeList = ArrayList<Recipe>()
     lateinit var mainViewModel: MainViewModel
     lateinit var recipeAdapter: RecipeListAdapter
+    lateinit var recyclerView: RecyclerView
+    lateinit var progressBar: RelativeLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,32 +35,63 @@ class SearchRecipes : AppCompatActivity() {
         var navBtnFavorites : View = findViewById(R.id.nav_btn_favorites)
         var navBntHome : View = findViewById(R.id.nav_btn_home)
         var navBtnAdd : View = findViewById(R.id.nav_btn_add)
+        progressBar = findViewById(R.id.progress_bar)
+//
+//        var dao = AppDatabase.getInstance(this)?.recipeDao()!!
+//        var repo = RecipeRepository(dao)
+
+        mainViewModel = MainViewModel(application)
+        recyclerView = findViewById(R.id.recyclerView_favorites_card)
+
+        mainViewModel.getSearchResults(0, 20, "", "")
+        var mutableLiveData = mainViewModel.searchResults
+
+        mutableLiveData.observe(this){
+            var recipeListGenerator = RecipeListGenerator()
+            recipeList = recipeListGenerator.makeList(it)
+            //getRecipes(apiRecipeList)
+            recipeAdapter.setItems(recipeList)
+            progressBar.visibility = View.GONE
+            recyclerView.visibility = View.VISIBLE
+        }
+
+        recipeAdapter = RecipeListAdapter(recipeList, { position -> onCardClick(position) })
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
 
         var searchView : SearchView = findViewById(R.id.search_view)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
 
-                searchView.clearFocus()
+                mainViewModel.getSearchResults(0, 50, "", query!!)
+                var mutableLiveData = mainViewModel.searchResults
 
-                mainViewModel.getSearchResults(0,30,"", query!!)
+                mutableLiveData.observe(this@SearchRecipes){
+                    var recipeListGenerator = RecipeListGenerator()
+                    recipeList = recipeListGenerator.makeList(it)
+                    //getRecipes(apiRecipeList)
+                    recipeAdapter.setItems(recipeList)
+                }
 
-                return false
+                return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                TODO("Not yet implemented")
+                return false
             }
         })
 
-        var listGenerator = RecipeListGenerator()
+        recyclerView.adapter = recipeAdapter
 
-        mainViewModel.searchResults.observe(this){
-            recipeList = listGenerator.makeList(it)
-        }
+//        var listGenerator = RecipeListGenerator()
+//
+//        mainViewModel.searchResults.observe(this){
+//            recipeList = listGenerator.makeList(it)
+//        }
 
         // create an adapter
-       // recipeAdapter = RecipeAdapter({ position -> onCardClick(position) }, recipeList)
+        // recipeAdapter = RecipeAdapter({ position -> onCardClick(position) }, recipeList)
 
 
         // take the views adapter then assign it to the custom adapter we created
@@ -73,7 +114,17 @@ class SearchRecipes : AppCompatActivity() {
 
     private fun onCardClick(position: Int) {
         val myIntent = Intent(this, RecipeDetails::class.java)
+        myIntent.putExtra("id", recipeList[position].recipeId)
+        myIntent.putExtra("isFavorite", recipeList[position].isFavorite)
         myIntent.putExtra("title", recipeList[position].title)
+        myIntent.putExtra("yields", recipeList[position].yields)
+        myIntent.putExtra("prepTime", recipeList[position].prepTime)
+        myIntent.putExtra("cookTime", recipeList[position].cookTime)
+        myIntent.putExtra("totalTime", recipeList[position].totalTime)
+        myIntent.putExtra("ingredients", recipeList[position].ingredients)
+        myIntent.putExtra("directions", recipeList[position].directions)
+        myIntent.putExtra("imageUrl", recipeList[position].imageUrl)
+
         startActivity(myIntent)
     }
     private fun getRecipes(recipeList: List<Recipe>) {

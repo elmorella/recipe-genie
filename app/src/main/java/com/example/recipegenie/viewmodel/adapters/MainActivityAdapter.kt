@@ -10,8 +10,10 @@ import coil.load
 import com.example.recipegenie.R
 import com.example.recipegenie.model.Recipe
 
-class MainActivityAdapter (private var recipeList: List<Recipe>) :
-    RecyclerView.Adapter<MainActivityAdapter.ViewHolder>() {
+class MainActivityAdapter (
+    private var recipeList: List<Recipe>,
+    private val onCardClick: (position: Int) -> Unit
+)  : RecyclerView.Adapter<MainActivityAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder( parent: ViewGroup, viewType: Int)
     : ViewHolder {
@@ -20,7 +22,7 @@ class MainActivityAdapter (private var recipeList: List<Recipe>) :
         var viewInflater = LayoutInflater.from(parent.context)
             .inflate(R.layout.category_card_layout, parent, false)
 
-        return ViewHolder(viewInflater)
+        return ViewHolder(viewInflater, onCardClick)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         // add current item to the holder
@@ -36,8 +38,8 @@ class MainActivityAdapter (private var recipeList: List<Recipe>) :
         return recipeList.size
     }
 
-    class ViewHolder(view: View) :
-        RecyclerView.ViewHolder(view), View.OnClickListener {
+    class ViewHolder(view: View, private val onCardClick: (position: Int) -> Unit) :
+        RecyclerView.ViewHolder(view), View.OnClickListener{
 
         init {
             itemView.setOnClickListener(this)
@@ -50,8 +52,8 @@ class MainActivityAdapter (private var recipeList: List<Recipe>) :
         var imageUrl: ImageView = view.findViewById(R.id.img_Url)
 
         override fun onClick(v: View?) {
-//            val position = absoluteAdapterPosition
-//            onCardClick(position)
+            val position = absoluteAdapterPosition
+            onCardClick(position)
         }
     }
     fun setItems(itemList: List<Recipe>){

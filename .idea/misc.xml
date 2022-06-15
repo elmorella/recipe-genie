@@ -53,18 +53,21 @@
         <entry key="..\:/Users/elgu9/AndroidStudioProjects/ProjectP0/app/src/main/res/layout/recipe_list_item_layout.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/elgu9/AndroidStudioProjects/ProjectP0/app/src/main/res/mipmap-anydpi-v26/fav_heart.xml" value="0.1" />
         <entry key="..\:/Users/elgu9/AndroidStudioProjects/ProjectP0/app/src/main/res/mipmap-anydpi-v26/fav_heart_round.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/category_btn.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/state.xml" value="0.1385" />
         <entry key="app/src/main/res/layout/activity_favorites_list.xml" value="0.24441528320312503" />
         <entry key="app/src/main/res/layout/activity_landing_page.xml" value="0.2572463768115942" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.20018115942028986" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1891891891891892" />
         <entry key="app/src/main/res/layout/activity_new_recipe_form.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_recipe_list.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_recipe_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_recipe_page.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_search_recipes.xml" value="0.24947916666666667" />
+        <entry key="app/src/main/res/layout/activity_registration.xml" value="0.23802083333333332" />
+        <entry key="app/src/main/res/layout/activity_search_recipes.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_update_recipe.xml" value="0.22291666666666668" />
         <entry key="app/src/main/res/layout/category_card_layout.xml" value="0.7769205729166667" />
+        <entry key="app/src/main/res/layout/progres_bar.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/recipe_list_item_layout.xml" value="0.2572463768115942" />
       </map>
     </option>

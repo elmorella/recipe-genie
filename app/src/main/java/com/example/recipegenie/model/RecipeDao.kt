@@ -29,4 +29,7 @@ interface RecipeDao {
 
     @Query("select * from recipes where title like :search")
     fun findRecipeWithTitle(search: String): List<Recipe>
+
+    @Query("select * from recipes where upper(title) like '%' || upper(:searchText) || '%' ")
+    fun search(searchText : String): LiveData<List<Recipe>>
 }

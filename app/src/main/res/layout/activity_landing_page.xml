@@ -93,6 +93,7 @@
         android:textColor="@color/white"
         />
     <TextView
+        android:id="@+id/sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign Up"
@@ -107,21 +108,21 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="50dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Don't Want To Sign Up?"
-            android:textSize="15dp"
-            android:textColor="@color/white"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Guest"
-            android:textSize="15dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_marginLeft="5dp"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Don't Want To Sign Up?"-->
+<!--            android:textSize="15dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            />-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Guest"-->
+<!--            android:textSize="15dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_marginLeft="5dp"/>-->
     </LinearLayout>
 
 </RelativeLayout>

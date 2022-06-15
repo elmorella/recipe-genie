@@ -6,13 +6,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/genie_2"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.recipeGenie">
         <activity
-            android:name=".FeaturedAdapter"
+            android:name=".view.registration.RegistrationActivity"
             android:exported="false" />
         <activity
             android:name=".view.registration.LoginActivity"

@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipegenie.MainActivity
@@ -23,9 +25,6 @@ class RecipeListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_list)
 
-        var activityTitle: TextView = findViewById(R.id.activity_title)
-
-//        var titleStr: String = intent.getStringExtra("listSource")!!
 
         var recyclerView: RecyclerView = findViewById(R.id.recyclerView_favorites_card)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -39,6 +38,26 @@ class RecipeListActivity : AppCompatActivity() {
             recipeAdapter = RecipeListAdapter(recipeList, { position -> onCardClick(position) })
             // take the views adapter then assign it to the custom adapter we created
             recyclerView.adapter = recipeAdapter
+
+        var search = findViewById<SearchView>(R.id.search_view)
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                mainViewModel.searchIn(query!!)
+                mainViewModel.results.observe(this@RecipeListActivity, Observer { recipeList ->
+                    getRecipes(recipeList)
+                })
+                return false
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+
+                mainViewModel.searchIn(query!!)
+                mainViewModel.results.observe(this@RecipeListActivity, Observer { recipeList ->
+                    getRecipes(recipeList)
+                })
+                return false
+            }
+        })
 
         var NavBtnAdd : View = findViewById(R.id.nav_btn_add)
         NavBtnAdd.setOnClickListener() {

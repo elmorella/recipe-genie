@@ -2,25 +2,22 @@ package com.example.recipegenie.viewmodel
 
 
 import android.app.Application
-import android.app.appsearch.SearchResults
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.example.recipegenie.RecipeResults
+import androidx.lifecycle.*
 import com.example.recipegenie.model.RecipeRepository
 import com.example.recipegenie.model.Recipe
-import com.example.recipegenie.view.FavoritesList
+import com.example.recipegenie.model.RecipeResults
 import kotlinx.coroutines.launch
 
 class MainViewModel(app: Application): AndroidViewModel(app) {
     private val repo: RecipeRepository
     val recipeList : LiveData<List<Recipe>>?
-    lateinit var searchResults : MutableLiveData<RecipeResults>
+    var searchResults = MutableLiveData<RecipeResults>()
+    private val _search =MutableLiveData<String>()
 
     init {
         repo = RecipeRepository(app)
         recipeList = repo.getAllRecipes()
+        _search.value = ""
     }
 
     fun getSearchResults(offset: Int, limit: Int, tags: String, query: String)
@@ -48,5 +45,17 @@ class MainViewModel(app: Application): AndroidViewModel(app) {
     fun findRecipeWithTitle(search: String): List<Recipe> {
 
         return repo.findRecipeWithTitle(search)
+    }
+
+    var results = Transformations.switchMap(_search ){ string->
+        if(string != ""){
+            repo.search(string)
+        }else{
+            repo.getAllRecipes()
+        }
+    }
+
+    fun searchIn(text: String) =viewModelScope.launch{
+        _search.value = text
     }
 }
