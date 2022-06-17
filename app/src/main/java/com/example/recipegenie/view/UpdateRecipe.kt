@@ -1,4 +1,4 @@
-package com.example.recipegenie.view
+package com.example.recipegenie
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.recipegenie.R
 import com.example.recipegenie.model.Recipe
+import com.example.recipegenie.view.RecipeListActivity
 import com.example.recipegenie.viewmodel.MainViewModel
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
