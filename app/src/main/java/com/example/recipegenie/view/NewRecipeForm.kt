@@ -40,13 +40,11 @@ class NewRecipeForm : AppCompatActivity() {
 
         btnSubmit.setOnClickListener {
             val title: String = inputTitle.text.toString()
-            val yields: String = inputYields.text.toString() + "servings"
-            val prepTime: String = inputPrepTime.text.toString() + "minutes"
-            val cookTime: String = inputCookTime.text.toString() + "minutes"
-            val totalTime: String = "${
-                inputPrepTime.text.toString().toInt() +
-                        inputCookTime.text.toString().toInt()
-            } minutes"
+            val yields: String = inputYields.text.toString() + " servings"
+            val prepTime: String = inputPrepTime.text.toString() + " minutes"
+            val cookTime: String = inputCookTime.text.toString() + " minutes"
+            val totalTime: String = "${inputPrepTime.text.toString().toInt() +
+                                       inputCookTime.text.toString().toInt()} minutes"
             val ingredients: String = inputIngredients.text.toString()
             val directions: String = inputDirections.text.toString()
 
@@ -57,17 +55,17 @@ class NewRecipeForm : AppCompatActivity() {
                 directions.isNullOrBlank()
             ) {
                 if (title.isNullOrBlank())
-                    this.inputTitle.setError("Please Enter a recipe title")
+                    this.inputTitle.setError("Please enter a recipe title")
                 if (yields.isNullOrBlank())
-                    this.inputYields.setError("Please Enter number of servings")
+                    this.inputYields.setError("Please enter number of servings")
                 if (prepTime.isNullOrBlank())
-                    this.inputPrepTime.setError("Please Enter time it takes to prep ingredients")
+                    this.inputPrepTime.setError("Please enter time it takes to prep ingredients")
                 if (cookTime.isNullOrBlank())
-                    this.inputCookTime.setError("Please Enter time it takes to cook")
+                    this.inputCookTime.setError("Please enter time it takes to cook")
                 if (ingredients.isNullOrBlank())
                     this.inputIngredients.setError("Please the ingredient list")
                 if (directions.isNullOrBlank())
-                    this.inputDirections.setError("Please Enter cooking steps")
+                    this.inputDirections.setError("Please enter cooking steps")
 
                 val builder = AlertDialog.Builder(this)
                 // Set Alert Title

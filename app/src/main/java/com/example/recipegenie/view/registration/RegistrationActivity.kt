@@ -19,15 +19,15 @@ import com.google.firebase.database.FirebaseDatabase
 
 class RegistrationActivity : AppCompatActivity() {
 
-    lateinit var auth : FirebaseAuth
-    var databaseReference : DatabaseReference? =null
-    var database : FirebaseDatabase? = null
-    lateinit var sign_up : Button
-    lateinit var cancel_btn : Button
-    lateinit var username : TextInputEditText
-    lateinit var password : TextInputEditText
-    lateinit var confirm_password : TextInputEditText
-    lateinit var email_id : TextInputEditText
+    lateinit var auth: FirebaseAuth
+    var databaseReference: DatabaseReference? = null
+    var database: FirebaseDatabase? = null
+    lateinit var sign_up: Button
+    lateinit var cancel_btn: Button
+    lateinit var username: TextInputEditText
+    lateinit var password: TextInputEditText
+    lateinit var confirm_password: TextInputEditText
+    lateinit var email_id: TextInputEditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,42 +46,50 @@ class RegistrationActivity : AppCompatActivity() {
         register()
 
     }
-    private fun register(){
+
+    private fun register() {
         sign_up.setOnClickListener {
 
-            if(TextUtils.isEmpty( username.text.toString())){
-                username.setError("Plaese Enter User Name")
+            if (TextUtils.isEmpty(username.text.toString())) {
+                username.setError("Please Enter User Name")
                 return@setOnClickListener
-            }else if (TextUtils.isEmpty( password.text.toString())){
-                password.setError("Plaese Enter Password")
+            } else if (TextUtils.isEmpty(password.text.toString())) {
+                password.setError("Please Enter Password")
                 return@setOnClickListener
-            }else if (TextUtils.isEmpty( confirm_password.text.toString())){
-                confirm_password.setError("Plaese Enter Confirm Password")
+            } else if (TextUtils.isEmpty(confirm_password.text.toString())) {
+                confirm_password.setError("Please Enter Confirm Password")
                 return@setOnClickListener
-            }else if (TextUtils.isEmpty( email_id.text.toString())){
-                email_id.setError("Plaese Enter Email-Id")
+            } else if (TextUtils.isEmpty(email_id.text.toString())) {
+                email_id.setError("Please Enter Email-Id")
                 return@setOnClickListener
             }
             println("sign up before auth")
 
-            auth.createUserWithEmailAndPassword(email_id.text.toString(),password.text.toString())
-                .addOnCompleteListener(this, OnCompleteListener{ task ->
-                    if(task.isSuccessful){
-                        Log.d("AppDatabase","AAA to 1")
-                        Toast.makeText(this, "Successfully Registered", Toast.LENGTH_LONG).show()
+            auth.createUserWithEmailAndPassword(email_id.text.toString(), password.text.toString())
+                .addOnCompleteListener(this, OnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d("AppDatabase", "AAA to 1")
+                        Toast.makeText(
+                            this, "Successfully Registered",
+                            Toast.LENGTH_LONG
+                        ).show()
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
                         finish()
-                    }else {
-                        Log.d("AppDatabase","AAA else 1")
+                    } else {
+                        Log.d("AppDatabase", "AAA else 1")
                         val builder = AlertDialog.Builder(this@RegistrationActivity)
-                        builder.setMessage("User Already Exist. Login with Email-Id and Password or Register with another Email-Id")
+                        builder.setMessage(
+                            "User Already Exist. Login with Email-Id and Password or " +
+                                    "Register with another Email-Id"
+                        )
                         builder.setCancelable(true)
                         builder.setNegativeButton("OK", DialogInterface.OnClickListener
                         { dialog, which -> dialog.cancel() })
                         val alertDialog: AlertDialog = builder.create()
                         alertDialog.show()
-                        Toast.makeText(this, "Registration Failed", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this, "Registration Failed", Toast.LENGTH_LONG)
+                            .show()
                     }
                 })
         }

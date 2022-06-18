@@ -1,14 +1,11 @@
 package com.example.recipegenie.viewmodel
 
-
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.recipegenie.model.RecipeRepository
-import com.example.recipegenie.model.Recipe
-import com.example.recipegenie.model.RecipeResults
+import com.example.recipegenie.model.*
 import kotlinx.coroutines.launch
 
-class MainViewModel(app: Application): AndroidViewModel(app) {
+class MainViewModel(app: Application): ViewModel() {
     private val repo: RecipeRepository
     val recipeList : LiveData<List<Recipe>>?
     var searchResults = MutableLiveData<RecipeResults>()
@@ -21,7 +18,7 @@ class MainViewModel(app: Application): AndroidViewModel(app) {
     }
 
     fun getSearchResults(offset: Int, limit: Int, tags: String, query: String)
-    = viewModelScope.launch{
+            = viewModelScope.launch{
 
         searchResults = repo.getSearchResults(offset, limit, tags, query)
     }

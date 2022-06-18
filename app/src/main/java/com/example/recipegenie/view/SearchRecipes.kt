@@ -10,12 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipegenie.MainActivity
 import com.example.recipegenie.R
-import com.example.recipegenie.model.AppDatabase
 import com.example.recipegenie.model.Recipe
-import com.example.recipegenie.model.RecipeRepository
-import com.example.recipegenie.view.NewRecipeForm
-import com.example.recipegenie.view.RecipeDetails
-import com.example.recipegenie.view.RecipeListActivity
 import com.example.recipegenie.viewmodel.MainViewModel
 import com.example.recipegenie.viewmodel.RecipeListGenerator
 import com.example.recipegenie.viewmodel.adapters.RecipeListAdapter

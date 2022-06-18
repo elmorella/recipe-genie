@@ -8,15 +8,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RecipeRepository(context: Context) {
-
+class RecipeRepository (context: Context){
     var db: RecipeDao? = AppDatabase.getInstance(context)?.recipeDao()
     var retrofitClient = RetrofitClient.create()
     var searchResults = MutableLiveData<RecipeResults>()
 
     // Gets recipes from API and returns MutableLiveData<RecipeResults>
     fun getSearchResults(offset: Int, limit: Int, tags: String, query: String) :
-    MutableLiveData<RecipeResults>{
+            MutableLiveData<RecipeResults> {
         CoroutineScope(Dispatchers.IO).launch {
 
             var res = retrofitClient.getSearchResults(offset, limit, tags, query)
@@ -53,7 +52,7 @@ class RecipeRepository(context: Context) {
     fun deleteAll() {
         db?.deleteAll()
     }
-//
+    //
 //    fun findRecipeWithId(search: String): List<Recipe> {
 //
 //        return db?.findRecipeWithId(search)!!

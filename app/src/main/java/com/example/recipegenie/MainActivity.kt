@@ -15,11 +15,12 @@ import com.example.recipegenie.view.RecipeDetails
 import com.example.recipegenie.view.RecipeListActivity
 import com.example.recipegenie.view.SearchRecipes
 import com.example.recipegenie.viewmodel.adapters.MainActivityAdapter
-import com.example.recipegenie.viewmodel.MainViewModel
 import com.example.recipegenie.viewmodel.RecipeListGenerator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import androidx.lifecycle.*
+import com.example.recipegenie.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 

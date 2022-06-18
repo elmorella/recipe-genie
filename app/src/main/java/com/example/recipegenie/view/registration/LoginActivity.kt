@@ -87,17 +87,17 @@ class LoginActivity : AppCompatActivity() {
 
         sign_in_btn.setOnClickListener {
             if((username.text.toString()).isEmpty()){
-                username.setHint("Plaese Enter your Email id")
+                username.setHint("Please enter your email id")
                 username.setHintTextColor(Color.RED)
             } else if((password.text.toString()).isEmpty()){
-                password.setHint("Plaese Enter your password")
+                password.setHint("Please enter your password")
                 password.setHintTextColor(Color.RED)
             }
 
             val vFieldValidationError: String = fieldValidationError()
             if (vFieldValidationError != "No Error") {
                 val builder = AlertDialog.Builder(this@LoginActivity)
-                builder.setMessage("Please enter Required fields")
+                builder.setMessage("Please enter required fields")
                 builder.setCancelable(true)
                 builder.setNegativeButton("OK", DialogInterface.OnClickListener
                 { dialog, which -> dialog.cancel() })
@@ -137,10 +137,10 @@ class LoginActivity : AppCompatActivity() {
     private fun fieldValidationError(): String {
         when (true) {
             (username.text.toString()).isEmpty() -> {
-                return  "Plaese Enter your Email id"
+                return  "Please enter your email id"
 
             } (password.text.toString()).isEmpty() -> {
-            return   "Plaese Enter Password"
+            return   "Please enter Password"
 
         }else -> {
             return "No Error"
