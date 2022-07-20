@@ -59,15 +59,15 @@
         <entry key="app/src/main/res/layout/activity_favorites_list.xml" value="0.24441528320312503" />
         <entry key="app/src/main/res/layout/activity_featured_adapter.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/activity_landing_page.xml" value="0.23076923076923078" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1891891891891892" />
-        <entry key="app/src/main/res/layout/activity_new_recipe_form.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_recipe_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_new_recipe_form.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_recipe_list.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_recipe_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.23802083333333332" />
-        <entry key="app/src/main/res/layout/activity_search_recipes.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_search_recipes.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_update_recipe.xml" value="0.22291666666666668" />
-        <entry key="app/src/main/res/layout/category_card_layout.xml" value="0.7769205729166667" />
+        <entry key="app/src/main/res/layout/category_card_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/progres_bar.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/recipe_list_item_layout.xml" value="0.2572463768115942" />
       </map>
