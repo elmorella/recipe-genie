@@ -1,20 +1,23 @@
 # Recipe Genie
 
 ## Project Description
-Recipe Genie is an Android mobile device application that features an
-elegant interface that allows users to search and manage recipes. The
-application uses an external data source backed by the Tasty API to query the
-user's request. Recipes can be stored locally as "favorites" in the device's
-internal storage.
+Recipe Genie is an Android mobile application built to demonstrate the fundamentals of the Kotlin 
+language, MVVM design architecture, Retrofit, Room Database, CRUD operations, RecyclerViews, 
+SearchViews, input validation, Sorting, and XML based UI.
+
+The app consumes data from the Tasty recipes API using Retrofit and Gson. Recipe information is  
+displayed to the user in a recycler view.
 
 ### Features: 
- * Search from thousands of recipes available in the Tasty library
- * Get step-by-step instructions on how to cook every recipe
- * Store, create, update and delete recipes from internal memory
+ * Create and store custom recipes using a form
+ * Search for online recipes using a SearchView
+ * Save recipes from search results
+ * Retrieve favorite recipes from internal storage
+ * Update and delete recipes from internal storage
 
 ## Technologies:
 | IDE/Editor        | Languages   | Tools      |
 | ----------------- | ----------- | ---------- |
 | * Android Studio  | * Kotlin    | * Retrofit |
-| * IntelliJ IDEA   | * SQLite    | * Mockito  |
-| * VS Studio Code  | * XML       | * Postman  |
+| * IntelliJ IDEA   | * SQLite    | * Gson     |
+| * VS Studio Code  | * XML       | * Room DB  |
