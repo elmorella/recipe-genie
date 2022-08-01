@@ -24,8 +24,8 @@ interface RecipeDao {
     @Query("delete from recipes")
     fun deleteAll()
 
-//    @Query("select * from recipes where recipeId like :search")
-//    fun findRecipeWithId(search: String): List<Recipe>
+    @Query("select * from recipes where recipeId like :id")
+    fun findRecipeWithId(id: Int): Recipe
 
     @Query("select * from recipes where title like :search")
     fun findRecipeWithTitle(search: String): List<Recipe>

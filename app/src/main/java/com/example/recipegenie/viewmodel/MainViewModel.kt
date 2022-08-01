@@ -44,6 +44,11 @@ class MainViewModel(app: Application): ViewModel() {
         return repo.findRecipeWithTitle(search)
     }
 
+    fun findRecipeWithId(id: Int): Recipe {
+
+        return repo.findRecipeWithId(id)
+    }
+
     var results = Transformations.switchMap(_search ){ string->
         if(string != ""){
             repo.search(string)
@@ -52,7 +57,7 @@ class MainViewModel(app: Application): ViewModel() {
         }
     }
 
-    fun searchIn(text: String) =viewModelScope.launch{
+    fun searchIn(text: String) = viewModelScope.launch{
         _search.value = text
     }
 }

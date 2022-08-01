@@ -2,6 +2,7 @@ package com.example.recipegenie.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,6 +16,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.ktx.Firebase
+import timber.log.Timber
 
 class RecipeDetails : AppCompatActivity() {
 
@@ -82,41 +84,6 @@ class RecipeDetails : AppCompatActivity() {
         }
     }
 
-//    fun getDataFromDB(viewModel:MainViewModel): Recipe {
-//        // Map TextViews in recipe page
-//        var id: TextView = findViewById(R.id.id)
-//        var title: TextView = findViewById(R.id.title)
-//        var yields: TextView = findViewById(R.id.yields)
-//        var prepTime: TextView = findViewById(R.id.prep_time)
-//        var totalTime: TextView = findViewById(R.id.total_time)
-//        var ingredients: TextView = findViewById(R.id.ingredients)
-//        var directions: TextView = findViewById(R.id.directions)
-//        var iconIsFavorite: ImageView = findViewById(R.id.icon_is_fav)
-//
-//        // Get recipe from repo with ID
-//        var recipe: List<Recipe> =
-//            viewModel.findRecipeWithTitle(intent.getStringExtra("title").toString())
-//
-//        //TODO: Null validation
-//
-////        // Populate Text Views with recipe fields
-////        id.text = recipe[0].recipeId.toString()
-////        title.text = recipe[0].title
-////        yields.text = recipe[0].yields
-////        prepTime.text = recipe[0].prepTime
-////        totalTime.text = recipe[0].totalTime
-////        ingredients.text = recipe[0].ingredients
-////        directions.text = recipe[0].directions
-//
-//        //TODO need to calculate cook time and URL
-//
-//        return Recipe(
-//            id.text.toString().toInt(), false, title.text.toString(), yields.text.toString(),
-//            prepTime.text.toString(), "Need to calculate", totalTime.text.toString(),
-//            ingredients.text.toString(), directions.text.toString(), "get URL"
-//        )
-//    }
-
     fun populateFields(recipe: Recipe) {
         // Map TextViews in recipe page
         val id: TextView = findViewById(R.id.id)
@@ -138,6 +105,13 @@ class RecipeDetails : AppCompatActivity() {
         directions.text = recipe.directions
         recipePhoto.load(recipe.imageUrl)
 
+        try {
+            if (recipe.recipeId!! == mainViewModel.findRecipeWithId(recipe.recipeId!!).recipeId) {
+                recipe.isFavorite = true
+            }
+        }catch (e: Exception) {
+            recipe.isFavorite = false
+        }
 
         if (recipe.isFavorite) {
             iconIsFavorite.setImageResource(R.drawable.fav_heart_foreground)

@@ -14,7 +14,7 @@ class RecipeListGenerator {
         if (!recipeResults.results.isNullOrEmpty()) {
 
             recipeResults.results =
-                recipeResults.results.filter { it.sections != null } as ArrayList<Results>
+                recipeResults.results.filter { !it.sections.isNullOrEmpty() } as ArrayList<Results>
 
             for (index in 0..recipeResults.results.lastIndex) {
                 // ingredients array to String
@@ -51,21 +51,17 @@ class RecipeListGenerator {
 
 
                 val recipe = Recipe(
-                    null, false, "", "", "",
-                    "", "", "", "", ""
+                    id,
+                    isFavorite,
+                    name,
+                    yields,
+                    prepTime,
+                    coockTime,
+                    totalTime,
+                    ingredients,
+                    directions,
+                    imageUrl
                 )
-
-                recipe.recipeId = id
-                recipe.isFavorite = isFavorite
-                recipe.title = name
-                recipe.yields = yields
-                recipe.prepTime = prepTime
-                recipe.cookTime = coockTime
-                recipe.totalTime = totalTime
-                recipe.ingredients = ingredients
-                recipe.directions = directions
-                recipe.imageUrl = imageUrl
-
                 recipeList.add(recipe)
             }
         }
