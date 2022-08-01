@@ -7,7 +7,6 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.recipegenie.R
 import com.example.recipegenie.model.Recipe
-import com.example.recipegenie.view.RecipeListActivity
 import com.example.recipegenie.viewmodel.MainViewModel
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
