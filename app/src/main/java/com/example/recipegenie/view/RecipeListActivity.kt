@@ -25,8 +25,7 @@ class RecipeListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recipe_list)
 
-
-        var recyclerView: RecyclerView = findViewById(R.id.recyclerView_favorites_card)
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView_favorites_card)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         mainViewModel = MainViewModel(application)
@@ -34,13 +33,13 @@ class RecipeListActivity : AppCompatActivity() {
             getRecipes(recipeList)
         }
 
-            // create an adapter
-            recipeAdapter = RecipeListAdapter(recipeList, { position -> onCardClick(position) })
-            // take the views adapter then assign it to the custom adapter we created
-            recyclerView.adapter = recipeAdapter
+        // create an adapter
+        recipeAdapter = RecipeListAdapter(recipeList) { position -> onCardClick(position) }
+        // take the views adapter then assign it to the custom adapter we created
+        recyclerView.adapter = recipeAdapter
 
-        var search = findViewById<SearchView>(R.id.search_view)
-        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        val search = findViewById<SearchView>(R.id.search_view)
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 mainViewModel.searchIn(query!!)
                 mainViewModel.results.observe(this@RecipeListActivity, Observer { recipeList ->
@@ -50,7 +49,6 @@ class RecipeListActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
-
                 mainViewModel.searchIn(query!!)
                 mainViewModel.results.observe(this@RecipeListActivity, Observer { recipeList ->
                     getRecipes(recipeList)
@@ -59,19 +57,19 @@ class RecipeListActivity : AppCompatActivity() {
             }
         })
 
-        var NavBtnAdd : View = findViewById(R.id.nav_btn_add)
-        NavBtnAdd.setOnClickListener() {
+        val navBtnAdd: View = findViewById(R.id.nav_btn_add)
+        navBtnAdd.setOnClickListener() {
             val intent = Intent(this, NewRecipeForm::class.java)
             startActivity(intent)
         }
 
-        var NavBtnSearch : View = findViewById(R.id.nav_btn_search)
-        NavBtnSearch.setOnClickListener {
+        val navBtnSearch: View = findViewById(R.id.nav_btn_search)
+        navBtnSearch.setOnClickListener {
             val myIntent = Intent(this, SearchRecipes::class.java)
             startActivity(myIntent)
         }
-        var NavBtnHome : View = findViewById(R.id.nav_btn_home)
-        NavBtnHome.setOnClickListener {
+        val navBtnHome: View = findViewById(R.id.nav_btn_home)
+        navBtnHome.setOnClickListener {
             val myIntent = Intent(this, MainActivity::class.java)
             startActivity(myIntent)
         }
@@ -79,16 +77,16 @@ class RecipeListActivity : AppCompatActivity() {
 
     private fun onCardClick(position: Int) {
         val myIntent = Intent(this, RecipeDetails::class.java)
-        myIntent.putExtra("id", recipeList[position].recipeId)
-        myIntent.putExtra("isFavorite", recipeList[position].isFavorite)
-        myIntent.putExtra("title", recipeList[position].title)
-        myIntent.putExtra("yields", recipeList[position].yields)
-        myIntent.putExtra("prepTime", recipeList[position].prepTime)
-        myIntent.putExtra("cookTime", recipeList[position].cookTime)
-        myIntent.putExtra("totalTime", recipeList[position].totalTime)
-        myIntent.putExtra("ingredients", recipeList[position].ingredients)
-        myIntent.putExtra("directions", recipeList[position].directions)
-        myIntent.putExtra("imageUrl", recipeList[position].imageUrl)
+        myIntent.putExtra("recipe", recipeList[position])
+//        myIntent.putExtra("isFavorite", recipeList[position].isFavorite)
+//        myIntent.putExtra("title", recipeList[position].title)
+//        myIntent.putExtra("yields", recipeList[position].yields)
+//        myIntent.putExtra("prepTime", recipeList[position].prepTime)
+//        myIntent.putExtra("cookTime", recipeList[position].cookTime)
+//        myIntent.putExtra("totalTime", recipeList[position].totalTime)
+//        myIntent.putExtra("ingredients", recipeList[position].ingredients)
+//        myIntent.putExtra("directions", recipeList[position].directions)
+//        myIntent.putExtra("imageUrl", recipeList[position].imageUrl)
 
         startActivity(myIntent)
     }

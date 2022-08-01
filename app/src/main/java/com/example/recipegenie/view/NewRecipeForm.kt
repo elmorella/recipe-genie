@@ -43,8 +43,10 @@ class NewRecipeForm : AppCompatActivity() {
             val yields: String = inputYields.text.toString() + " servings"
             val prepTime: String = inputPrepTime.text.toString() + " minutes"
             val cookTime: String = inputCookTime.text.toString() + " minutes"
-            val totalTime: String = "${inputPrepTime.text.toString().toInt() +
-                                       inputCookTime.text.toString().toInt()} minutes"
+            val totalTime: String = "${
+                inputPrepTime.text.toString().toInt() +
+                        inputCookTime.text.toString().toInt()
+            } minutes"
             val ingredients: String = inputIngredients.text.toString()
             val directions: String = inputDirections.text.toString()
 
@@ -97,7 +99,6 @@ class NewRecipeForm : AppCompatActivity() {
                 vm.insertRecipes(recipe)
 
                 val intent = Intent(this, RecipeListActivity::class.java)
-                intent.putExtra("title", recipe.title.toString())
                 startActivity(intent)
 
                 val message = "recipe successfully added"

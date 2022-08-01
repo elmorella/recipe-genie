@@ -25,30 +25,31 @@ class RecipeDetails : AppCompatActivity() {
         setContentView(R.layout.activity_recipe_page)
 
         mainViewModel = MainViewModel(application)
+        val recipe: Recipe = intent.getParcelableExtra("recipe")!!
 
-        var id = intent.getIntExtra("id", 0)
-        var isFavorite = intent.getBooleanExtra("isFavorite", false)
-        var title = intent.getStringExtra("title")!!
-        var yields = intent.getStringExtra("yields")!!
-        var prepTime = intent.getStringExtra("prepTime")!!
-        var cookTime = intent.getStringExtra("cookTime")!!
-        var totalTime = intent.getStringExtra("totalTime")!!
-        var ingredients = intent.getStringExtra("ingredients")!!
-        var directions = intent.getStringExtra("directions")!!
-        var imageUrl = intent.getStringExtra("imageUrl")!!
+//        var id = intent.getIntExtra("id", 0)
+//        var isFavorite = intent.getBooleanExtra("isFavorite", false)
+//        var title = intent.getStringExtra("title")!!
+//        var yields = intent.getStringExtra("yields")!!
+//        var prepTime = intent.getStringExtra("prepTime")!!
+//        var cookTime = intent.getStringExtra("cookTime")!!
+//        var totalTime = intent.getStringExtra("totalTime")!!
+//        var ingredients = intent.getStringExtra("ingredients")!!
+//        var directions = intent.getStringExtra("directions")!!
+//        var imageUrl = intent.getStringExtra("imageUrl")!!
 
-        var recipe = Recipe(
-            id,
-            isFavorite,
-            title,
-            yields,
-            prepTime,
-            cookTime,
-            totalTime,
-            ingredients,
-            directions,
-            imageUrl
-        )
+//        var recipe = Recipe(
+//            id,
+//            isFavorite,
+//            title,
+//            yields,
+//            prepTime,
+//            cookTime,
+//            totalTime,
+//            ingredients,
+//            directions,
+//            imageUrl
+//        )
         populateFields(recipe)
 
         val btnHome: ExtendedFloatingActionButton = findViewById(R.id.btn_cancel)
@@ -60,6 +61,7 @@ class RecipeDetails : AppCompatActivity() {
         val btnEdit: ExtendedFloatingActionButton = findViewById(R.id.btn_edit)
         btnEdit.setOnClickListener {
             val intent: Intent = Intent(this, UpdateRecipe::class.java)
+            //TODO: parcelable
             intent.putExtra("title", recipe.title)
             startActivity(intent)
         }
@@ -79,17 +81,17 @@ class RecipeDetails : AppCompatActivity() {
                 .show()
         }
 
-        if (!isFavorite) {
+        if (!recipe.isFavorite) {
             btnEdit.visibility = View.GONE
             btnDelete.visibility = View.GONE
         }
 
-        var crashlytics = Firebase.crashlytics
+        val crashlytics = Firebase.crashlytics
 
-        var fav = findViewById<ImageView>(R.id.icon_is_fav)
+        val fav = findViewById<ImageView>(R.id.icon_is_fav)
         fav.setOnClickListener {
             try {
-                if (!isFavorite) {
+                if (!recipe.isFavorite) {
                     fav.setImageResource(R.drawable.fav_heart_foreground)
                     recipe.isFavorite = true
                     mainViewModel.insertRecipes(recipe)
@@ -100,55 +102,54 @@ class RecipeDetails : AppCompatActivity() {
                 crashlytics.recordException(e)
             }
         }
-
     }
 
-    fun getDataFromDB(viewModel:MainViewModel): Recipe {
-        // Map TextViews in recipe page
-        var id: TextView = findViewById(R.id.id)
-        var title: TextView = findViewById(R.id.title)
-        var yields: TextView = findViewById(R.id.yields)
-        var prepTime: TextView = findViewById(R.id.prep_time)
-        var totalTime: TextView = findViewById(R.id.total_time)
-        var ingredients: TextView = findViewById(R.id.ingredients)
-        var directions: TextView = findViewById(R.id.directions)
-        var iconIsFavorite: ImageView = findViewById(R.id.icon_is_fav)
-
-        // Get recipe from repo with ID
-        var recipe: List<Recipe> =
-            viewModel.findRecipeWithTitle(intent.getStringExtra("title").toString())
-
-        //TODO: Null validation
-
-//        // Populate Text Views with recipe fields
-//        id.text = recipe[0].recipeId.toString()
-//        title.text = recipe[0].title
-//        yields.text = recipe[0].yields
-//        prepTime.text = recipe[0].prepTime
-//        totalTime.text = recipe[0].totalTime
-//        ingredients.text = recipe[0].ingredients
-//        directions.text = recipe[0].directions
-
-        //TODO need to calculate cook time and URL
-
-        return Recipe(
-            id.text.toString().toInt(), false, title.text.toString(), yields.text.toString(),
-            prepTime.text.toString(), "Need to calculate", totalTime.text.toString(),
-            ingredients.text.toString(), directions.text.toString(), "get URL"
-        )
-    }
+//    fun getDataFromDB(viewModel:MainViewModel): Recipe {
+//        // Map TextViews in recipe page
+//        var id: TextView = findViewById(R.id.id)
+//        var title: TextView = findViewById(R.id.title)
+//        var yields: TextView = findViewById(R.id.yields)
+//        var prepTime: TextView = findViewById(R.id.prep_time)
+//        var totalTime: TextView = findViewById(R.id.total_time)
+//        var ingredients: TextView = findViewById(R.id.ingredients)
+//        var directions: TextView = findViewById(R.id.directions)
+//        var iconIsFavorite: ImageView = findViewById(R.id.icon_is_fav)
+//
+//        // Get recipe from repo with ID
+//        var recipe: List<Recipe> =
+//            viewModel.findRecipeWithTitle(intent.getStringExtra("title").toString())
+//
+//        //TODO: Null validation
+//
+////        // Populate Text Views with recipe fields
+////        id.text = recipe[0].recipeId.toString()
+////        title.text = recipe[0].title
+////        yields.text = recipe[0].yields
+////        prepTime.text = recipe[0].prepTime
+////        totalTime.text = recipe[0].totalTime
+////        ingredients.text = recipe[0].ingredients
+////        directions.text = recipe[0].directions
+//
+//        //TODO need to calculate cook time and URL
+//
+//        return Recipe(
+//            id.text.toString().toInt(), false, title.text.toString(), yields.text.toString(),
+//            prepTime.text.toString(), "Need to calculate", totalTime.text.toString(),
+//            ingredients.text.toString(), directions.text.toString(), "get URL"
+//        )
+//    }
 
     fun populateFields(recipe: Recipe) {
         // Map TextViews in recipe page
-        var id: TextView = findViewById(R.id.id)
-        var title: TextView = findViewById(R.id.title)
-        var yields: TextView = findViewById(R.id.yields)
-        var prepTime: TextView = findViewById(R.id.prep_time)
-        var totalTime: TextView = findViewById(R.id.total_time)
-        var ingredients: TextView = findViewById(R.id.ingredients)
-        var directions: TextView = findViewById(R.id.directions)
-        var recipePhoto: ImageView = findViewById(R.id.image_recipe_photo)
-        var iconIsFavorite: ImageView = findViewById(R.id.icon_is_fav)
+        val id: TextView = findViewById(R.id.id)
+        val title: TextView = findViewById(R.id.title)
+        val yields: TextView = findViewById(R.id.yields)
+        val prepTime: TextView = findViewById(R.id.prep_time)
+        val totalTime: TextView = findViewById(R.id.total_time)
+        val ingredients: TextView = findViewById(R.id.ingredients)
+        val directions: TextView = findViewById(R.id.directions)
+        val recipePhoto: ImageView = findViewById(R.id.image_recipe_photo)
+        val iconIsFavorite: ImageView = findViewById(R.id.icon_is_fav)
 
         id.text = recipe.recipeId.toString()
         title.text = recipe.title

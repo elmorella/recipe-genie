@@ -27,24 +27,20 @@ class SearchRecipes : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_recipes)
 
-        var navBtnFavorites : View = findViewById(R.id.nav_btn_favorites)
-        var navBntHome : View = findViewById(R.id.nav_btn_home)
-        var navBtnAdd : View = findViewById(R.id.nav_btn_add)
-        progressBar = findViewById(R.id.progress_bar)
-//
-//        var dao = AppDatabase.getInstance(this)?.recipeDao()!!
-//        var repo = RecipeRepository(dao)
+        val navBtnFavorites: View = findViewById(R.id.nav_btn_favorites)
+        val navBntHome: View = findViewById(R.id.nav_btn_home)
+        val navBtnAdd: View = findViewById(R.id.nav_btn_add)
 
-        mainViewModel = MainViewModel(application)
+        progressBar = findViewById(R.id.progress_bar)
         recyclerView = findViewById(R.id.recyclerView_favorites_card)
 
+        mainViewModel = MainViewModel(application)
         mainViewModel.getSearchResults(0, 20, "", "")
-        var mutableLiveData = mainViewModel.searchResults
+        val mldSearchResults = mainViewModel.searchResults
 
-        mutableLiveData.observe(this){
-            var recipeListGenerator = RecipeListGenerator()
+        mldSearchResults.observe(this) {
+            val recipeListGenerator = RecipeListGenerator()
             recipeList = recipeListGenerator.makeList(it)
-            //getRecipes(apiRecipeList)
             recipeAdapter.setItems(recipeList)
             progressBar.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
@@ -54,18 +50,16 @@ class SearchRecipes : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-
-        var searchView : SearchView = findViewById(R.id.search_view)
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        val searchView: SearchView = findViewById(R.id.search_view)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
 
                 mainViewModel.getSearchResults(0, 50, "", query!!)
-                var mutableLiveData = mainViewModel.searchResults
+                val mutableLiveData = mainViewModel.searchResults
 
-                mutableLiveData.observe(this@SearchRecipes){
-                    var recipeListGenerator = RecipeListGenerator()
+                mutableLiveData.observe(this@SearchRecipes) {
+                    val recipeListGenerator = RecipeListGenerator()
                     recipeList = recipeListGenerator.makeList(it)
-                    //getRecipes(apiRecipeList)
                     recipeAdapter.setItems(recipeList)
                 }
 
@@ -79,19 +73,7 @@ class SearchRecipes : AppCompatActivity() {
 
         recyclerView.adapter = recipeAdapter
 
-//        var listGenerator = RecipeListGenerator()
-//
-//        mainViewModel.searchResults.observe(this){
-//            recipeList = listGenerator.makeList(it)
-//        }
-
-        // create an adapter
-        // recipeAdapter = RecipeAdapter({ position -> onCardClick(position) }, recipeList)
-
-
-        // take the views adapter then assign it to the custom adapter we created
-        //recyclerView.adapter = recipeAdapter
-
+        // Buttons
         navBtnFavorites.setOnClickListener {
             val myIntent = Intent(this, RecipeListActivity::class.java)
             startActivity(myIntent)
@@ -109,23 +91,14 @@ class SearchRecipes : AppCompatActivity() {
 
     private fun onCardClick(position: Int) {
         val myIntent = Intent(this, RecipeDetails::class.java)
-        myIntent.putExtra("id", recipeList[position].recipeId)
-        myIntent.putExtra("isFavorite", recipeList[position].isFavorite)
-        myIntent.putExtra("title", recipeList[position].title)
-        myIntent.putExtra("yields", recipeList[position].yields)
-        myIntent.putExtra("prepTime", recipeList[position].prepTime)
-        myIntent.putExtra("cookTime", recipeList[position].cookTime)
-        myIntent.putExtra("totalTime", recipeList[position].totalTime)
-        myIntent.putExtra("ingredients", recipeList[position].ingredients)
-        myIntent.putExtra("directions", recipeList[position].directions)
-        myIntent.putExtra("imageUrl", recipeList[position].imageUrl)
+        myIntent.putExtra("recipe", recipeList[position])
 
         startActivity(myIntent)
     }
+
     private fun getRecipes(recipeList: List<Recipe>) {
         this.recipeList.clear()
         this.recipeList.addAll(recipeList)
         recipeAdapter.notifyDataSetChanged()
     }
-
 }
