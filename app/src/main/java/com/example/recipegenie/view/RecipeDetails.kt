@@ -57,14 +57,16 @@ class RecipeDetails : AppCompatActivity() {
                 .show()
         }
 
+        val fav = findViewById<ImageView>(R.id.icon_is_fav)
         if (!recipe.isFavorite) {
             btnEdit.visibility = View.GONE
             btnDelete.visibility = View.GONE
+        } else{
+            fav.setImageResource(R.drawable.fav_heart_foreground)
         }
 
         val crashlytics = Firebase.crashlytics
 
-        val fav = findViewById<ImageView>(R.id.icon_is_fav)
         fav.setOnClickListener {
             try {
                 if (!recipe.isFavorite) {

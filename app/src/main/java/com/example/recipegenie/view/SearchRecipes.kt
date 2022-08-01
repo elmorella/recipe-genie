@@ -95,10 +95,4 @@ class SearchRecipes : AppCompatActivity() {
 
         startActivity(myIntent)
     }
-
-    private fun getRecipes(recipeList: List<Recipe>) {
-        this.recipeList.clear()
-        this.recipeList.addAll(recipeList)
-        recipeAdapter.notifyDataSetChanged()
-    }
 }

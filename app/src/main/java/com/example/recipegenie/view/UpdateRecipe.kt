@@ -11,8 +11,6 @@ import com.example.recipegenie.viewmodel.MainViewModel
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 
-//TODO UpdateRecipe!!!
-
 class UpdateRecipe : AppCompatActivity() {
     lateinit var mainViewModel: MainViewModel
 
