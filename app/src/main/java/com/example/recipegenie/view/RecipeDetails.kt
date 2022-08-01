@@ -27,29 +27,6 @@ class RecipeDetails : AppCompatActivity() {
         mainViewModel = MainViewModel(application)
         val recipe: Recipe = intent.getParcelableExtra("recipe")!!
 
-//        var id = intent.getIntExtra("id", 0)
-//        var isFavorite = intent.getBooleanExtra("isFavorite", false)
-//        var title = intent.getStringExtra("title")!!
-//        var yields = intent.getStringExtra("yields")!!
-//        var prepTime = intent.getStringExtra("prepTime")!!
-//        var cookTime = intent.getStringExtra("cookTime")!!
-//        var totalTime = intent.getStringExtra("totalTime")!!
-//        var ingredients = intent.getStringExtra("ingredients")!!
-//        var directions = intent.getStringExtra("directions")!!
-//        var imageUrl = intent.getStringExtra("imageUrl")!!
-
-//        var recipe = Recipe(
-//            id,
-//            isFavorite,
-//            title,
-//            yields,
-//            prepTime,
-//            cookTime,
-//            totalTime,
-//            ingredients,
-//            directions,
-//            imageUrl
-//        )
         populateFields(recipe)
 
         val btnHome: ExtendedFloatingActionButton = findViewById(R.id.btn_cancel)
@@ -61,8 +38,7 @@ class RecipeDetails : AppCompatActivity() {
         val btnEdit: ExtendedFloatingActionButton = findViewById(R.id.btn_edit)
         btnEdit.setOnClickListener {
             val intent: Intent = Intent(this, UpdateRecipe::class.java)
-            //TODO: parcelable
-            intent.putExtra("title", recipe.title)
+            intent.putExtra("recipe", recipe)
             startActivity(intent)
         }
 

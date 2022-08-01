@@ -30,7 +30,7 @@ class UpdateRecipe : AppCompatActivity() {
         setContentView(R.layout.activity_update_recipe)
 
         mainViewModel = MainViewModel(application)
-        var recipe = mainViewModel.findRecipeWithTitle(intent.getStringExtra("title")!!)[0]
+        val recipe: Recipe = intent.getParcelableExtra("recipe")!!
         val btnUpdate: ExtendedFloatingActionButton = findViewById(R.id.btn_update)
         val btnCancel: ExtendedFloatingActionButton = findViewById(R.id.btn_cancel)
 
@@ -47,7 +47,7 @@ class UpdateRecipe : AppCompatActivity() {
             startActivity(intent)}
 
         btnUpdate.setOnClickListener {
-            var recipeUpd = Recipe(
+            val recipeUpd = Recipe(
                 recipe.recipeId, recipe.isFavorite, title.text.toString(),
                 yields.text.toString(), prepTime.text.toString(),recipe.cookTime, totalTime.text.toString(),
                 ingredients.text.toString(), directions.text.toString(), recipe.imageUrl

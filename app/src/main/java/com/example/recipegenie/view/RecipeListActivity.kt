@@ -78,15 +78,6 @@ class RecipeListActivity : AppCompatActivity() {
     private fun onCardClick(position: Int) {
         val myIntent = Intent(this, RecipeDetails::class.java)
         myIntent.putExtra("recipe", recipeList[position])
-//        myIntent.putExtra("isFavorite", recipeList[position].isFavorite)
-//        myIntent.putExtra("title", recipeList[position].title)
-//        myIntent.putExtra("yields", recipeList[position].yields)
-//        myIntent.putExtra("prepTime", recipeList[position].prepTime)
-//        myIntent.putExtra("cookTime", recipeList[position].cookTime)
-//        myIntent.putExtra("totalTime", recipeList[position].totalTime)
-//        myIntent.putExtra("ingredients", recipeList[position].ingredients)
-//        myIntent.putExtra("directions", recipeList[position].directions)
-//        myIntent.putExtra("imageUrl", recipeList[position].imageUrl)
 
         startActivity(myIntent)
     }
